@@ -4,6 +4,8 @@ Welcome to the iLab frontend repository. This project serves as the user interfa
 
 Project detail can be found in [this Google Docs](https://docs.google.com/document/d/1LrAqqTd58ldKJLBiHCrjrwJL641t1vtTooFNEX3d2c8/edit?usp=sharing)
 
+Codebase is located at https://github.com/BU-CS633/iLab, and you can access the production with https://ilab-cs633.onrender.com.
+
 ## Development Workflow
 Trunk based development will be used to allow smooth collaboration and faster feature release. The implementation is below:
 
