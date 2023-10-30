@@ -1,4 +1,4 @@
-.homepage-title{
+.homepage-title {
     height: 105px;
     font-size: 80px;
     font-family: ITFDevanagariMarathi-Bold, ITFDevanagariMarathi;
@@ -9,34 +9,34 @@
     -webkit-text-fill-color: transparent;
 }
 
-.head3{
+.head3 {
     font-size: 13px;
 }
 
-.form{
+.form {
 
     position: relative;
 }
 
-.form .fa-search{
+.form .fa-search {
 
     position: absolute;
-    top:30%;
+    top: 30%;
     left: 10px;
     color: #9ca3af;
 
 }
 
-.form .fa-times{
+.form .fa-times {
     position: absolute;
-    top:30%;
+    top: 30%;
     right: 10px;
-    color: #9ca3af; 
+    color: #9ca3af;
 }
 
 
 .tooltipcustom {
-    left:30%;
+    left: 30%;
     position: absolute;
     display: inline-block;
 }
@@ -101,7 +101,7 @@
     color: black;
 }
 
-body{
+body {
     background-size: cover;
-    background-image: url(https://lanhu-dds-backend.oss-cn-beijing.aliyuncs.com/merge_image/imgs/67727661766f444b9fed7204b3c105e0_mergeImage.png);
+    background-image: url(../images/backgrounds/67727661766f444b9fed7204b3c105e0_mergeImage.png);
 }
