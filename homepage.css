@@ -1,0 +1,107 @@
+.homepage-title{
+    height: 105px;
+    font-size: 80px;
+    font-family: ITFDevanagariMarathi-Bold, ITFDevanagariMarathi;
+    font-weight: bold;
+    color: #F0CEFE;
+    background: linear-gradient(270deg, #206EFE 0%, #596BFF 19%, #9786FF 35%, #BB96FF 49%, #FFCEFC 92%, #EFCEFF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.head3{
+    font-size: 13px;
+}
+
+.form{
+
+    position: relative;
+}
+
+.form .fa-search{
+
+    position: absolute;
+    top:30%;
+    left: 10px;
+    color: #9ca3af;
+
+}
+
+.form .fa-times{
+    position: absolute;
+    top:30%;
+    right: 10px;
+    color: #9ca3af; 
+}
+
+
+.tooltipcustom {
+    left:30%;
+    position: absolute;
+    display: inline-block;
+}
+
+.tooltipcustom i {
+    position: absolute;
+    top: -5px;
+    opacity: 0.5;
+    color: #969696;
+}
+
+.tooltipcustom .tooltipcustomtext {
+    visibility: hidden;
+    width: 260px;
+    background-color: gray;
+    color: black;
+    border-radius: 6px;
+    padding: 1rem;
+    position: absolute;
+    top: 3rem;
+    left: -10px;
+    z-index: 1;
+}
+
+.tooltipcustom .tooltipcustomtext::after {
+    content: '';
+    position: absolute;
+    left: 1rem;
+    top: -12px;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 14px solid grey;
+}
+
+.tooltipcustom:hover .tooltipcustomtext {
+    visibility: visible;
+}
+
+.dropdown-menu.custom-dropdown {
+    min-width: 100%;
+    background-color: #F2F2F2;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.dropdown-menu.custom-dropdown a {
+    padding: 1rem;
+    font-weight: 500;
+}
+
+.dropdown-menu.custom-dropdown a.active::after {
+    content: '✔	';
+    float: right;
+}
+
+.dropdown-menu.custom-dropdown a:hover,
+.dropdown-menu.custom-dropdown a:active,
+.dropdown-menu.custom-dropdown a.active {
+    background-color: #CEDDF4;
+    color: black;
+}
+
+body{
+    background-size: cover;
+    background-image: url(https://lanhu-dds-backend.oss-cn-beijing.aliyuncs.com/merge_image/imgs/67727661766f444b9fed7204b3c105e0_mergeImage.png);
+}
