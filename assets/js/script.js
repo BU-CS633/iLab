@@ -1,15 +1,32 @@
-$.ajax({
-    url: "https://ilab-api.onrender.com/api/",
-    method: "GET",
-    headers: {
-        "Content-Type": "application/json",
-    },
-    error: function () {
-        alert('Error')
-    },
-    success: function (response) {
-        console.log(response)
-    },
-});
+function getAllRequest() {
+    var settings = {
+        "url": "http://127.0.0.1:8000/api/requests/",
+        "method": "GET",
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+    };
 
-let table = new DataTable('#myTable');
+    $.ajax(settings).done(function (response) {
+        var dataSet = []
+        for (let i = 0; i < response.results.length; i++) {
+            dataSet.push([response.results[i].owner.username, response.results[i].item.name, response.results[i].item.vendor, response.results[i].item.catalog, response.results[i].item.channel, response.results[i].item.qty, response.results[i].item.price, response.results[i].request_date])
+        }
+        new DataTable('#all-request', {
+            columns: [
+                { title: 'Owner' },
+                { title: 'Item' },
+                { title: 'Vendor' },
+                { title: 'Catalog' },
+                { title: 'Channel' },
+                { title: 'Quantity' },
+                { title: 'Price' },
+                { title: 'Date Request' },
+            ],
+            data: dataSet,
+        });
+    });
+
+
+}
