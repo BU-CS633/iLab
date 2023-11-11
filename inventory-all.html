@@ -12,34 +12,7 @@
 
 <body>
   <!--  Body Wrapper -->
-  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-    data-sidebar-position="fixed" data-header-position="fixed">
-    <!-- Sidebar Start -->
-    <aside class="left-sidebar">
-      <!-- Sidebar scroll-->
-      <div>
-        <div class="brand-logo d-flex align-items-center justify-content-between">
-          <a href="./index.html" class="text-nowrap logo-img">
-            <img src="assets/images/logos/dark-logo.svg" width="180" alt="" />
-          </a>
-          <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
-            <i class="ti ti-x fs-8"></i>
-          </div>
-        </div>
-        <!-- Sidebar navigation-->
-        <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
-          <ul id="sidebarnav">
-            <li class="nav-small-cap">
-              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">Add New Item</span>
-            </li>
-          </ul>
-        </nav>
-        <!-- End Sidebar navigation -->
-      </div>
-      <!-- End Sidebar scroll-->
-    </aside>
-    <!--  Sidebar End -->
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-header-position="fixed">
     <!--  Main wrapper -->
     <div class="body-wrapper">
       <!--  Header Start -->
@@ -84,26 +57,11 @@
             <div class="card w-100">
               <div class="card-body">
                 <div class="mb-3 mb-sm-0">
-                  <h5 class="card-title fw-semibold">Sales Overview</h5>
+                  <h5 class="card-title fw-semibold">ItemList</h5>
                 </div>
                 <div id="myTableContainer">
-                  <table id="myTable" class="display">
-                    <thead>
-                      <tr>
-                        <th>Column 1</th>
-                        <th>Column 2</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Row 1 Data 1</td>
-                        <td>Row 1 Data 2</td>
-                      </tr>
-                      <tr>
-                        <td>Row 2 Data 1</td>
-                        <td>Row 2 Data 2</td>
-                      </tr>
-                    </tbody>
+                  <table id="inventory-all" class="display">
+
                   </table>
                 </div>
               </div>
@@ -120,13 +78,11 @@
   </div>
   <script src="assets/libs/jquery/dist/jquery.min.js"></script>
   <script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/sidebarmenu.js"></script>
-  <script src="assets/js/app.min.js"></script>
-  <script src="assets/libs/apexcharts/dist/apexcharts.min.js"></script>
-  <script src="assets/libs/simplebar/dist/simplebar.js"></script>
-  <script src="assets/js/dashboard.js"></script>
   <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-  <script src="assets/js/script.js"></script>
+  <script src="assets/js/getallitem.js"></script>
+  <script>
+    getAllItems();
+  </script>
 </body>
 
 
