@@ -27,6 +27,21 @@ function getAllRequest() {
             data: dataSet,
         });
     });
+}
 
+function getItemDetail() {
+    var settings = {
+        "url": "http://127.0.0.1:8000/api/items/1",
+        "method": "GET",
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+    };
 
+    $.ajax(settings).done(function (response) {
+        $("#item-name").text(response.name);
+        $("#item-fullname").text(response.fullName);
+        $("#item-vendor").text(response.vendor);
+    });
 }
