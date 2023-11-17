@@ -52,7 +52,7 @@ function getItemDetail(id) {
 
 function getRequestDetail(id) {
     var settings = {
-        "url": URL + "api/requests/" + id,
+        "url": URL + "/api/requests/" + id,
         "method": "GET",
         "timeout": 0,
         "headers": {
@@ -63,6 +63,7 @@ function getRequestDetail(id) {
     $.ajax(settings).done(function (response) {
         console.log(response)
         console.log(response.item.name)
+        $("#request-title").text(response.item.name);
     });
 }
 
