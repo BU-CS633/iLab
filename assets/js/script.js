@@ -1,6 +1,6 @@
 function getAllRequest() {
     var settings = {
-        "url": "http://127.0.0.1:8000/api/requests/",
+        "url": "https://ilab-api.onrender.com/api/requests/",
         "method": "GET",
         "timeout": 0,
         "headers": {
