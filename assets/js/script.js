@@ -1,6 +1,6 @@
 function getAllRequest() {
     var settings = {
-        "url": "https://ilab-api.onrender.com/api/requests/",
+        "url": "http://127.0.0.1:8000/api/requests/",
         "method": "GET",
         "timeout": 0,
         "headers": {
@@ -23,6 +23,7 @@ function getAllRequest() {
                 { title: 'Quantity' },
                 { title: 'Price' },
                 { title: 'Date Request' },
+                { 'data': null, title: 'Action', wrap: true, "render": function (item) { return '<div class="btn-group"> <button type="button" onclick="console.log(\'' + item[0] + ' \')" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#DetailModal">Detail</button></div>' } },
             ],
             data: dataSet,
         });
