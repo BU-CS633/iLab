@@ -24,16 +24,16 @@ function getAllRequest() {
                 { title: 'Quantity' },
                 { title: 'Price' },
                 { title: 'Date Request' },
-                { 'data': null, title: 'Action', wrap: true, "render": function (item) { return '<div class="btn-group"> <button type="button" onclick="console.log(\'' + item[2] + ' \')" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#RequestModal">Detail</button></div>' } },
+                { 'data': null, title: 'Action', wrap: true, "render": function (item) { return '<div class="btn-group"> <button type="button" onclick="getRequestDetail(\'' + item[2] + ' \')" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#RequestModal">Detail</button></div>' } },
             ],
             data: dataSet,
         });
     });
 }
 
-function getItemDetail() {
+function getItemDetail(id) {
     var settings = {
-        "url": "http://127.0.0.1:8000/api/items/1",
+        "url": "http://127.0.0.1:8000/api/items/" + id,
         "method": "GET",
         "timeout": 0,
         "headers": {
@@ -59,8 +59,7 @@ function getRequestDetail(id) {
     };
 
     $.ajax(settings).done(function (response) {
-        $("#item-name").text(response.name);
-        $("#item-fullname").text(response.fullName);
-        $("#item-vendor").text(response.vendor);
+        console.log(response)
+        console.log(response.item.name)
     });
 }
