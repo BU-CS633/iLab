@@ -8,6 +8,7 @@
   <link rel="shortcut icon" type="image/png" href="assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="assets/css/styles.min.css" />
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+  <link rel="stylesheet" href="./assets/css/tabposition.css">
 </head>
 
 <body>
@@ -51,27 +52,57 @@
       </header>
       <!--  Header End -->
       <div class="container-fluid">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="request-tab" data-bs-toggle="tab" href="#request-pane" role="tab"
+              aria-controls="request" aria-selected="true">Request</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="inventory-tab" data-bs-toggle="tab" href="#inventory-pane" role="tab"
+              aria-controls="inventory" aria-selected="false">Inventory</a>
+          </li>
+        </ul>
+        <br>
         <!--  Row 1 -->
-        <div class="row">
-          <div class="col-lg-12 d-flex align-items-strech">
-            <div class="card w-100">
-              <div class="card-body">
-                <div class="mb-3 mb-sm-0">
-                  <h5 class="card-title fw-semibold">ItemList</h5>
-                </div>
-                <div id="myTableContainer">
-                  <table id="inventory-all" class="display">
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="request-pane" role="tabpanel" aria-labelledby="request-tab">
+            <div class="row">
+              <br>
+              <div class="col-lg-12 d-flex align-items-strech">
+                <div class="card w-100">
+                  <div class="card-body">
+                    <div class="mb-3 mb-sm-0">
+                      <h5 class="card-title fw-semibold"></h5>
+                    </div>
+                    <div id="myTableContainer">
+                      <table id="requests-all" class="display">
 
-                  </table>
+                      </table>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="py-6 px-6 text-center">
-          <!-- <p class="mb-0 fs-4">Design and Developed by <a href="https://adminmart.com/" target="_blank"
-              class="pe-1 text-primary text-decoration-underline">AdminMart.com</a> Distributed by <a
-              href="https://themewagon.com">ThemeWagon</a></p> -->
+          <div class="tab-pane fade" id="inventory-pane" role="tabpanel" aria-labelledby="inventory-tab">
+            <div class="row">
+              <br>
+              <div class="col-lg-12 d-flex align-items-strech">
+                <div class="card w-100">
+                  <div class="card-body">
+                    <div class="mb-3 mb-sm-0">
+                      <h5 class="card-title fw-semibold"></h5>
+                    </div>
+                    <div id="myTableContainer">
+                      <table id="inventory-all" class="display">
+
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
