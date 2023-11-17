@@ -24,7 +24,7 @@ function getAllRequest() {
                 { title: 'Quantity' },
                 { title: 'Price' },
                 { title: 'Date Request' },
-                { 'data': null, title: 'Action', wrap: true, "render": function (item) { return '<div class="btn-group"> <button type="button" onclick="console.log(\'' + item[2] + ' \')" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#DetailModal">Detail</button></div>' } },
+                { 'data': null, title: 'Action', wrap: true, "render": function (item) { return '<div class="btn-group"> <button type="button" onclick="console.log(\'' + item[2] + ' \')" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#RequestModal">Detail</button></div>' } },
             ],
             data: dataSet,
         });

@@ -16,7 +16,8 @@ async function getAllItems() {
             item.channel ?? 'N/A',
             item.location ?? 'N/A',
             item.link ?? 'N/A',
-            item.notes ?? 'N/A'
+            item.notes ?? 'N/A',
+            item.id ?? 'N/A'
         ]);
 
         $('#inventory-all').DataTable({
@@ -34,7 +35,9 @@ async function getAllItems() {
                 { title: 'Channel' },
                 { title: 'Location' },
                 { title: 'Link' },
-                { title: 'Notes' }
+                { title: 'Notes' },
+                { 'data': null, title: 'Action', wrap: true, "render": function (item) { return '<div class="btn-group"> <button type="button" onclick="console.log(\'' + item[13] + ' \')" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#InventoryModal">Detail</button></div>' } },
+
             ]
         });
     } catch (error) {
