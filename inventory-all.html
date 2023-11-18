@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="assets/css/styles.min.css" />
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
   <link rel="stylesheet" href="./assets/css/tabposition.css">
+  <link rel="stylesheet" href="./assets/css/buttonposition.css">
 </head>
 
 <body>
@@ -94,8 +95,6 @@
 
 
         <div class="modal-body">
-          <form>
-
             <h4>Item</h4>
             <div class="mb-3">
               <label for="fullname" class="form-label">Full name</label>
@@ -131,10 +130,6 @@
             </div>
 
         </div>
-
-
-
-
 
       </div>
     </div>
@@ -147,11 +142,10 @@
       <div class="modal-content">
         <div class="modal-header">
           <div>
-            <h5 class="modal-title" id="staticBackdropLabel">human NFAT engineered human NFAT engineered human</h5>
-            <label>owner</label>
+              <h1 id="nameRequest"></h1>
+              <span class="badge badge-custom">OWNER</span>
+              <span id="username"></span>
           </div>
-
-          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
           <div class="column">
             <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Request Again</button>
             <button type="button" class="btn btn-dark">Update</button>
@@ -162,47 +156,83 @@
 
 
         <div class="modal-body">
-          <form>
-
             <h4>Item</h4>
             <div class="mb-3">
-              <label for="fullname" class="form-label">Full name</label>
-              <input type="text" class="form-control" id="fullname">
+                <label for="fullnameRequest" class="form-label">Full name</label>
+                <input type="text" class="form-control" id="fullnameRequest" >
             </div>
             <div class="mb-3">
-              <label for="vendor" class="form-label">Vendor</label>
-              <input type="text" class="form-control" id="vendor">
+                <label for="vendorRequest" class="form-label">Vendor</label>
+                <input type="text" class="form-control" id="vendorRequest">
             </div>
             <div class="mb-3">
-              <label for="distributor" class="form-label">Distributor</label>
-              <input type="text" class="form-control" id="distributor">
+                <label for="distributorRequest" class="form-label">Distributor</label>
+                <input type="text" class="form-control" id="distributorRequest">
             </div>
             <div class="mb-3">
-              <label for="channel" class="form-label">Channel</label>
-              <input type="text" class="form-control" id="channel">
+                <label for="channelRequest" class="form-label">Channel</label>
+                <input type="text" class="form-control" id="channelRequest">
             </div>
             <div class="mb-3">
-              <label for="catalog" class="form-label">Catalog_#</label>
-              <input type="text" class="form-control" id="catalog">
+                <label for="catalogRequest" class="form-label">Catalog_#</label>
+                <input type="text" class="form-control" id="catalogRequest">
             </div>
             <div class="mb-3">
-              <label for="unitsize" class="form-label">Unit_Size</label>
-              <input type="text" class="form-control" id="unitsize">
+                <label for="unitsizeRequest" class="form-label">Unit_Size</label>
+                <input type="text" class="form-control" id="unitsizeRequest">
             </div>
             <div class="mb-3">
-              <label for="quantity" class="form-label">Quantity</label>
-              <input type="text" class="form-control" id="quantity">
+                <label for="quantityRequest" class="form-label">Quantity</label>
+                <input type="text" class="form-control" id="quantityRequest">
             </div>
             <div class="mb-3">
-              <label for="unitprice" class="form-label">Unit Price</label>
-              <input type="text" class="form-control" id="unitprice">
+                <label for="unitpriceRequest" class="form-label">Unit Price</label>
+                <input type="text" class="form-control" id="unitpriceRequest">
+            </div>
+            <div class="mb-3">
+                <label for="totalpriceRequest" class="form-label">Total Price</label>
+                <input type="text" class="form-control" id="totalpriceRequest">
+            </div>
+
+            <h4>Received</h4>
+            <div class="mb-3">
+                <label for="purchaseorderRequest" class="form-label">Purchase Order</label>
+                <input type="text" class="form-control" id="purchaseorderRequest">
+            </div>
+            <div class="mb-3">
+                <label for="dateRequest" class="form-label">Date_Request</label>
+                <input type="text" class="form-control" id="dateRequest">
+            </div>
+            <div class="mb-3">
+                <label for="dateorderRequest" class="form-label">Date_Order</label>
+                <input type="text" class="form-control" id="dateorderRequest">
+            </div>
+            <div class="mb-3">
+                <label for="orderedbyRequest" class="form-label">Ordered_By</label>
+                <input type="text" class="form-control" id="orderedbyRequest">
+            </div>
+            <div class="mb-3">
+                <label for="linkRequest" class="form-label">Link</label>
+                <input type="text" class="form-control" id="linkRequest">
+            </div>
+            <div class="mb-3">
+                <label for="lablocationRequest" class="form-label">Lab_Loacation</label>
+                <input type="text" class="form-control" id="lablocationRequest">
+            </div>
+            <div class="mb-3">
+                <label for="datereceivedRequest" class="form-label">Date_Received</label>
+                <input type="text" class="form-control" id="datereceivedRequest">
+            </div>
+            <div class="mb-3">
+                <label for="receivedbyRequest" class="form-label">Received_By</label>
+                <input type="text" class="form-control" id="receivedbyRequest">
+            </div>
+            <div class="mb-3">
+                <label for="notesRequest" class="form-label">Notes</label>
+                <input type="text" class="form-control" id="notesRequest">
             </div>
 
         </div>
-
-
-
-
 
       </div>
     </div>
@@ -217,7 +247,6 @@
     getAllItems();
     getAllRequest();
   </script>
+
 </body>
-
-
 </html>

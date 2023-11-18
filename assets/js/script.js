@@ -63,7 +63,22 @@ function getRequestDetail(id) {
     $.ajax(settings).done(function (response) {
         console.log(response)
         console.log(response.item.name)
-        $("#request-title").text(response.item.name);
+        $("#nameRequest").text(response.item.name);
+        $("#username").text(response.owner.username);
+        $('#fullnameRequest').attr('value', response.item.fullName)
+        $('#vendorRequest').attr('value', response.item.vendor)
+
+        $('#channelRequest').attr('value', response.item.channel)
+        $('#catalogRequest').attr('value', response.item.catalog)
+        $('#unitsizeRequest').attr('value', response.item.unitSize)
+        $('#quantityRequest').attr('value', response.item.qty)
+        $('#unitpriceRequest').attr('value', response.item.price)
+
+        $('#linkRequest').attr('value', response.item.link)
+        $('#notesRequest').attr('value', response.item.notes)
+        $('#datereceivedRequest').attr('value', response.item.lastReceivedDate)
+        $('#dateorderRequest').attr('value', response.item.lastOrderDate)
+        $('#lablocationRequest').attr('value', response.item.location)
     });
 }
 
