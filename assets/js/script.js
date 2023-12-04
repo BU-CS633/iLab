@@ -58,6 +58,13 @@ async function getAllRequest() {
                 console.log(itemNameToID);
                 
                 let itemID = itemNameToID[itemName];
+        
+                if (itemID) {
+                    console.log(`The ID for '${itemName}' is ${itemID}`);
+                    // Here you can use itemID for your POST request
+                } else {
+                    console.log(`Item name '${itemName}' not found.`);
+                }
 
                 itemNames.add(itemName);
 
