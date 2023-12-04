@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const navbarHtml = `
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">iLab</a>
+            <a class="navbar-brand" href="search-page.html">iLab</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -15,10 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         <a class="nav-link" href="/add-item">Add Item</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/all-item">All Item</a>
+                        <a class="nav-link" href="inventory-all.html">All Item</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/all-request">All Request</a>
+                        <a class="nav-link" href="request-all.html">All Request</a>
                     </li>
                     ${
                         isLoggedIn 
