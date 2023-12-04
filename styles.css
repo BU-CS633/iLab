@@ -1,0 +1,222 @@
+/* Contents of your style block */
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Add this CSS rule to center the table */
+table {
+    font-size: 14px; /* Increase the font size */
+    width: 100%; /* Make the table full width */
+    border-collapse: collapse; /* Collapse table borders */
+    margin: 0 auto; /* Center the table horizontally */
+}
+
+
+table.table thead.table-light th {
+    text-transform: uppercase;
+    font-weight: 500;
+    white-space: nowrap;
+    padding: 1.5rem !important; /* Increase header padding */
+    color: var(--bs-secondary);
+}
+
+table tr td {
+    padding: 0.7rem !important; /* Increase cell padding */
+}
+
+table.table1 tr td:first-child {
+    max-width: 150px;
+}
+
+table.table1 tr td:nth-child(2) {
+    max-width: 220px;
+}
+
+table.table1 tr td:nth-child(3) {
+    max-width: 75px;
+}
+
+table tfoot td {
+    padding-bottom: 0 !important;
+    border: 0;
+}
+
+table .btn {
+    font-size: 12px;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.table-striped>tbody>tr:nth-of-type(odd)>* {
+    --bs-table-bg-type: var(--bs-white);
+}
+
+.table-striped>tbody>tr:nth-of-type(even)>* {
+    --bs-table-bg-type: var(--bs-light);
+}
+
+.pagination .page-link {
+    border: 0;
+    box-shadow: none !important;
+    color: var(--bs-secondary);
+}
+
+.pagination .active .page-link,
+.pagination .page-link:hover {
+    color: var(--bs-primary);
+    background-color: rgba(13, 110, 253, 0.25);
+}
+
+.text-clip {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+}
+
+.text-clip.line1 {
+    -webkit-line-clamp: 1;
+}
+
+.text-clip.line2 {
+    -webkit-line-clamp: 2;
+}
+
+.text-clip.line3 {
+    -webkit-line-clamp: 3;
+}
+
+.text-clip.line4 {
+    -webkit-line-clamp: 4;
+}
+
+.table-account .badge {
+    font-size: 13px;
+    font-weight: 400;
+}
+
+table td .dropdown .dropdown-menu {
+    border: 0;
+    background-color: var(--bs-light);
+    padding: 0;
+    border-radius: 0;
+}
+
+table td .dropdown .btn {
+    background-color: var(--bs-btn-hover-bg);
+}
+
+table td .dropdown .dropdown-menu a {
+    padding: 1rem;
+}
+
+table td .dropdown .dropdown-menu a:hover {
+    background-color: rgba(13, 110, 253, 0.25);
+}
+
+.table-responsive {
+    overflow-y: clip;
+}
+
+.table-account,
+.table-account .btn {
+    font-size: 14px;
+}
+
+.table-account tr td:last-child {
+    text-align: right;
+    max-width: 500px;
+}
+
+.addrequest label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--bs-secondary);
+}
+
+.addrequest .form-group {
+    margin-bottom: 1rem;
+}
+
+.addrequest .form-group .form-control,
+.addrequest .form-group .form-select {
+    border: 0;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0;
+    padding-left: 0;
+    padding-right: 0;
+    font-weight: 500;
+    box-shadow: none;
+    position: relative;
+}
+
+.form-control[type="url"] {
+    color: var(--bs-primary);
+}
+
+.btngroup {
+    display: flex;
+    gap: 10px;
+}
+
+.text-link {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--bs-primary);
+}
+
+.form-group {
+    position: relative;
+}
+
+.form-group .copybtn {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+
+.main_container {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--bs-light);
+    display: grid;
+    place-items: center;
+} 
+.main_container .logo {
+    text-align: center;
+    width: 100px;
+    height: 80px;
+    background-color: var(--bs-primary);
+    display: grid;
+    place-items: center;
+    margin: auto;
+}
+
+.main_container .card {
+    margin-top: 2rem;
+    border: 0;
+    padding: 2rem 1.5rem;
+    min-width: 450px;
+}
+
+.main_container.signup .card {
+    margin: 0 auto;
+    max-width: 550px;
+    padding: 2rem;
+}
+
+.main_container .card .form-control {
+    background-color: var(--bs-gray-200);
+    height: 45px;
+    border: 0;
+    margin-bottom: 1.25rem;
+    margin-top: 8px;
+    box-shadow: none;
+}
+
+.main_container .card .btn {
+    padding: 0.7rem 2rem;
+    margin: auto;
+}
+

@@ -1,0 +1,26 @@
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 0.8rem 1rem; /* Keeps the navbar taller */
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: black !important; /* Logo text color is black */
+    font-size: 2rem; /* Increased font size for a larger logo */
+}
+
+.nav-link {
+    color: black !important; /* Nav item text color is black */
+    font-size: 1.2rem; /* Size of nav item text */
+    margin-right: 1rem; /* Space between nav items */
+    transition: box-shadow 0.3s, transform 0.3s; /* Smooth transition for hover effects */
+}
+
+.nav-link:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Shadow effect on hover */
+    transform: translateY(-2px); /* Slightly raises the link on hover */
+}

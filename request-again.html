@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Request again</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <!-- style.css -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<div class="modal fade" id="addRequestModal" tabindex="-1" role="dialog" aria-labelledby="addRequestModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+<!-- Modal -->
+<div class="container-fluid mt-3">
+  <div class="row">
+      <div class="col-md-12">
+          <div class="add-request-page">
+              <div class="card card-body border-0 shadow">
+                  <a href="#" class="h4"><i class="fas fa-arrow-left"></i></a>
+                  <div class="container">
+                      <div class="text-center">
+                          <h3>Add Request</h3>
+                          <p class="text-muted">Fill in the details below</p>
+                      </div>
+                      <form class="addrequest">
+                          <div class="row justify-content-between">
+                              <div class="col-md-5">
+                                  <div class="form-group">
+                                      <label for="ownerInput">Owner</label>
+                                      <input type="text" class="form-control" id="ownerInput" name="owner">
+                                  </div>
+
+                                  <div class="form-group">
+                                      <label for="itemNameInput">Item Name</label>
+                                      <input type="text" class="form-control" id="itemNameInput" name="itemName">
+                                  </div>
+
+                                  <div class="form-group">
+                                      <label for="vendorInput">Vendor</label>
+                                      <input type="text" class="form-control" id="vendorInput" name="vendor">
+                                  </div>
+
+                                  <div class="form-group">
+                                      <label for="distributorInput">Distributor</label>
+                                      <input type="text" class="form-control" id="distributorInput" name="distributor">
+                                  </div>
+
+                                  <div class="form-group">
+                                      <label for="channelInput">Channel</label>
+                                      <select class="form-select" id="channelInput" name="channel">
+                                          <option>B2P</option>
+                                          <!-- Additional options -->
+                                      </select>
+                                  </div>
+
+                                  <div class="form-group">
+                                      <label for="catalogInput">Catalog</label>
+                                      <input type="text" class="form-control" id="catalogInput" name="catalog">
+                                  </div>
+                                  <!-- Continue for other fields -->
+                              </div>
+                              <div class="col-md-5">
+                                  <!-- Additional form fields for the second column -->
+                                  <div class="form-group">
+                                      <label for="unitSizeInput">Unit Size</label>
+                                      <input type="text" class="form-control" id="unitSizeInput" name="unitSize">
+                                  </div>
+
+                                  <div class="form-group">
+                                      <label for="quantityRequestedInput">Quantity Requested</label>
+                                      <input type="text" class="form-control" id="quantityRequestedInput" name="quantityRequested">
+                                  </div>
+
+                                  <div class="form-group">
+                                      <label for="unitPriceInput">Unit Price</label>
+                                      <input type="text" class="form-control" id="unitPriceInput" name="unitPrice">
+                                  </div>
+
+                                  <div class="form-group">
+                                      <label>Total Price</label>
+                                      <h2 id="totalPriceDisplay"></h2> <!-- Display field -->
+                                  </div>
+
+                                  <div class="form-group">
+                                      <label for="dateRequestInput">Date Request</label>
+                                      <input type="text" class="form-control" id="dateRequestInput" name="dateRequest">
+                                  </div>
+
+                                  <div class="form-group">
+                                      <label for="notesTextarea">Notes</label>
+                                      <textarea class="form-control" id="notesTextarea" name="notes" rows="2"></textarea>
+                                  </div>
+
+                                  <div class="form-group">
+                                      <label for="linkInput">Link</label>
+                                      <input type="url" class="form-control" id="linkInput" name="link">
+                                  </div>
+
+                                  <!-- ... Additional Fields as Needed ... -->
+                              </div>
+                          </div>
+                      </form>                    
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+</div>
+</div>
+</div>
