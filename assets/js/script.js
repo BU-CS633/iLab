@@ -56,7 +56,7 @@ async function getAllRequest() {
                 });
         
                 console.log(itemNameToID);
-                
+                //Map item with item_name
                 let itemID = itemNameToID[itemName];
         
                 if (itemID) {
@@ -238,6 +238,8 @@ async function getAllRequest() {
 
         // Gather data from the form
         var formData = {
+            // owner will be use when apply authtication that login will its user ID and user for post
+
                 owner: 1, //need to change to current user later
                 item: $('#itemIDInput').val(),
                 qty: parseInt(document.getElementById('quantityRequestedInput').value),

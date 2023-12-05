@@ -13,12 +13,6 @@ async function getAllItems(searchQuery = '') {
             );
         }
 
-            // Destroy the existing DataTable and recreate it with new data
-            if ($.fn.DataTable.isDataTable('#inventory-all')) {
-                $('#inventory-all').DataTable().clear().destroy();
-            }
-
-
             const dataSet = filteredData.map(item => [
                 item.name,
                 item.fullName,
@@ -34,6 +28,11 @@ async function getAllItems(searchQuery = '') {
                 item.link ?? 'N/A',
                 item.notes ?? 'N/A'
             ]);
+
+            // Destroy the existing DataTable and recreate it with new data
+            if ($.fn.DataTable.isDataTable('#inventory-all')) {
+                $('#inventory-all').DataTable().clear().destroy();
+            }
 
             $('#inventory-all').DataTable({
                 data: dataSet,
