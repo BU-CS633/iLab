@@ -7,7 +7,7 @@ async function getAllItems(searchQuery = '') {
         const token = localStorage.getItem('token');
         if (!token) {
             console.error('No token found, redirecting to login.');
-            window.location.href = '/login.html'; // Redirect to login page if no token
+            window.location.href = 'login.html'; // Redirect to login page if no token
             return;
         }
 
