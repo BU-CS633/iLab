@@ -50,20 +50,21 @@ async function getAllRequest() {
     
         requestsData.forEach(request => {
             let item = itemLookup[request.item]; // Replace 'itemId' with your actual property name in request that refers to the item ID
-
             if (item) {
                 let url = item.link ? (item.link.startsWith('http://') || item.link.startsWith('https://') ? item.link : 'http://' + item.link) : 'No link';
                 url = url !== 'No link' ? '<a href="' + url + '" target="_blank">link</a>' : 'No link';
 
                 let itemName = request.item_name || 'Unknown';
-                itemNameToID[itemName] = request.item; // Replace 'itemId' with the actual property name
+                let itemId = request.item;
+                itemNameToID[itemName] = itemId; // Replace 'itemId' with the actual property name
                 itemNames.add(itemName);
+                // console.log(itemNameToID)
 
                 let vendor = item.vendor || 'Unknown';
                 let catalog = item.catalog || 'Unknown';
                 let channel = item.channel || 'Unknown';
                 let notesButton = `<button class="btn btn-link note-btn" data-notes="${request.request_notes}">View Notes</button>`;
-
+                
                 dataSet.push([
                     request.owner_username, 
                     itemName, 
@@ -216,50 +217,48 @@ async function getAllRequest() {
             }
         }
 
-        async function fetchCurrentUser() {
-            const token = localStorage.getItem('token');
-            if (!token) {
-                console.error('No token found');
-                return null;
-            }
-        
-            try {
-                const response = await fetch('http://127.0.0.1:8000/api/users/', {
-                    method: 'GET',
-                    headers: {
-                        'Authorization': 'Token ' + token
-                    }
-                });
-                if (response.ok) {
-                    const userDetails = await response.json();
-                    return userDetails; // Contains user ID and username
-                } else {
-                    console.error('Failed to fetch user details:', response.status);
-                    return null;
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                return null;
-            }
-        }
-        
-
-
     // Function to handle form submission
     async function submitForm() {
-        // Prevent the default form submission if needed
-        // event.preventDefault();
-        const currentUser = await fetchCurrentUser();
-        if (!currentUser) {
-            console.error('Unable to fetch current user details');
-            return; // Stop further execution if user details are not available
+        const token = localStorage.getItem('token'); // Retrieve the token from local storage
+        async function fetchCurrentUserId() {
+            try {
+                const response = await fetch('http://127.0.0.1:8000/api/current_user/', {
+                    headers: new Headers({
+                    'Authorization': 'Token ' + token  // Ensure correct format: 'Token <token>'
+                })
+            });
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                console.log('Current User ID:', data.user_id);
+                return data.user_id
+                // Use the user ID as needed in your frontend app
+            } catch (error) {
+                console.error('Failed to fetch current user ID:', error);
+            }
         }
+        
+        let userId;
+        try {
+            userId = await fetchCurrentUserId();
+        } catch (error) {
+            console.error('Error fetching user ID:', error);
+            return; // Stop execution if user ID could not be fetched
+        }
+    
+        if (!userId) {
+            console.error('No user ID found');
+            return; // Stop execution if no user ID
+        }
+
+        console.log(userId)
+        
         // Gather data from the form
         var formData = {
             // owner will be use when apply authtication that login will its user ID and user for post
-
-                owner: currentUser.count, //need to change to current user later
-                item: $('#itemIDInput').val(),
+                owner: userId, //need to change to current user later
+                item: itemNameToID[$('#itemNameInput').val()],
                 qty: parseInt(document.getElementById('quantityRequestedInput').value),
                 price: parseFloat(document.getElementById('unitPriceInput').value),
                 vendor: document.getElementById('vendorInput').value,
@@ -297,16 +296,6 @@ async function getAllRequest() {
                 console.error('Error:', error);
                 alert('Error creating request: ' + error); // Display error message
         });
-    }
-
-    async function displayCurrentUserName() {
-        const currentUser = await fetchCurrentUser();
-        if (currentUser) {
-            document.getElementById('ownerName').value = currentUser.username; // Assuming 'username' is the field name
-        } else {
-            console.error('Unable to fetch current user details');
-            // Handle error, like redirecting to login or showing a message
-        }
     }
     
     document.addEventListener('DOMContentLoaded', function() {
