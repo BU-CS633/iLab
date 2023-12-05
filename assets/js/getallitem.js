@@ -1,18 +1,32 @@
 async function getAllItems(searchQuery = '') {
     try {
-        const response = await fetch("http://127.0.0.1:8000/api/items/");
-        const data = await response.json();
+        let allItems = [];
+        let url = "http://127.0.0.1:8000/api/items/";
+        let hasNextPage = true;
 
-        let filteredData = data.results;
+        while (hasNextPage) {
+            const response = await fetch(url);
+            const data = await response.json();
 
+            allItems = allItems.concat(data.results);
+
+            // Check if there is a next page
+            if (data.next) {
+                url = data.next; // Update the URL for the next page
+            } else {
+                hasNextPage = false;
+            }
+        }
+
+        let filteredData = allItems;
         if (searchQuery) {
-            filteredData = filteredData.filter(item => 
+            filteredData = filteredData.filter(item =>
                 item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                 (item.vendor && item.vendor.toLowerCase().includes(searchQuery.toLowerCase())) ||
                 (item.catalog && item.catalog.toLowerCase().includes(searchQuery.toLowerCase()))
             );
         }
-
+        
             const dataSet = filteredData.map(item => [
                 item.name,
                 item.fullName,
@@ -33,6 +47,7 @@ async function getAllItems(searchQuery = '') {
             if ($.fn.DataTable.isDataTable('#inventory-all')) {
                 $('#inventory-all').DataTable().clear().destroy();
             }
+            console.log(dataSet)
 
             $('#inventory-all').DataTable({
                 data: dataSet,
