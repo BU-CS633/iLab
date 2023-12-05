@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Example condition: Change this based on how you check the user's login status
-    const isLoggedIn = true; // Set this to true if the user is logged in
+    const isLoggedIn = false; // Set this to true if the user is logged in
 
     const navbarHtml = `
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -31,11 +31,11 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <li><a class="dropdown-item" href="javascript:void(0)">My Request</a></li>
                                     <li><a class="dropdown-item" href="javascript:void(0)">My Account</a></li>
                                     <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="./authentication-login.html">Logout</a></li>
+                                    <li><a class="dropdown-item" href="login.html">Logout</a></li>
                                 </ul>
                             </li>`
                         : `
-                            <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>`
+                            <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>`
                     }
                 </ul>
             </div>
