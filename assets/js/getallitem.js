@@ -4,8 +4,19 @@ async function getAllItems(searchQuery = '') {
         let url = "http://127.0.0.1:8000/api/items/";
         let hasNextPage = true;
 
+        const token = localStorage.getItem('token');
+        if (!token) {
+            console.error('No token found, redirecting to login.');
+            window.location.href = '/login.html'; // Redirect to login page if no token
+            return;
+        }
+
         while (hasNextPage) {
-            const response = await fetch(url);
+            const response = await fetch(url, {
+                headers: {
+                    'Authorization': 'Token ' + token
+                }
+            });
             const data = await response.json();
 
             allItems = allItems.concat(data.results);

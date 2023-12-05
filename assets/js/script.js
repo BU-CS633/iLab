@@ -1,78 +1,68 @@
 async function getAllRequest() {
-    var owner_id 
-    var item_id
-    var requestSettings = {
-        "url": "http://127.0.0.1:8000/api/requests/",
-        "method": "GET",
-        "timeout": 0,
-        "headers": {
-            "Content-Type": "application/json"
-        },
-    };
+    const token = localStorage.getItem('token');
+    const authHeader = token ? { 'Authorization': 'Token ' + token } : {};
 
-    var itemSettings = {
-        "url": "http://127.0.0.1:8000/api/items/",
-        "method": "GET",
-        "timeout": 0,
-        "headers": {
-            "Content-Type": "application/json"
-        },
-    };
+    var dataSet = [];
+    var itemNames = new Set();
+    let itemNameToID = {};
+
+    async function fetchAllData(initialUrl) {
+        const token = localStorage.getItem('token');
+        const authHeader = token ? { 'Authorization': 'Token ' + token } : {};
+    
+        let dataAccumulator = [];
+        let url = initialUrl;
+    
+        while (url) {
+            const settings = {
+                "url": url,
+                "method": "GET",
+                "timeout": 0,
+                "headers": {
+                    "Content-Type": "application/json",
+                    ...authHeader
+                },
+            };
+    
+            try {
+                let response = await $.ajax(settings);
+                dataAccumulator = dataAccumulator.concat(response.results);
+                url = response.next; // Update URL for the next page
+            } catch (error) {
+                console.error("Error fetching data: ", error);
+                throw error; // Propagate the error
+            }
+        }
+    
+        return dataAccumulator;
+    }
 
     try {
-        let requestResponse = await $.ajax(requestSettings);
-        let itemResponse = await $.ajax(itemSettings);
+        let requestsData = await fetchAllData("http://127.0.0.1:8000/api/requests/");
+        let itemsData = await fetchAllData("http://127.0.0.1:8000/api/items/");
 
-        var dataSet = [];
-        var itemNames = new Set();
+        // Creating a lookup for items
+        let itemLookup = {};
+        itemsData.forEach(item => {
+            itemLookup[item.id] = item; // Replace 'id' with your actual item identifier
+        });
+        
+    
+        requestsData.forEach(request => {
+            let item = itemLookup[request.item]; // Replace 'itemId' with your actual property name in request that refers to the item ID
 
-        let itemNameToID = {}; // Object to map item names to their IDs
+            if (item) {
+                let url = item.link ? (item.link.startsWith('http://') || item.link.startsWith('https://') ? item.link : 'http://' + item.link) : 'No link';
+                url = url !== 'No link' ? '<a href="' + url + '" target="_blank">link</a>' : 'No link';
 
-        for (let i = 0; i < Math.max(itemResponse.results.length, requestResponse.results.length); i++) {
-            let request = requestResponse.results[i];
-            let item = itemResponse.results[i]; // Get the item details using the item ID from the request
-            
-
-            let url = item ? item.link : null;
-
-            // Check if url is not null or undefined
-            if (url) {
-                // Check if the URL starts with 'http://' or 'https://', if not, prepend 'http://'
-                if (!url.startsWith('http://') && !url.startsWith('https://')) {
-                    url = 'http://' + url;
-                }
-                url = '<a href="' + url + '" target="_blank">link</a>';
-            } else {
-                // Handle the case where url is null or undefined
-                url = 'No link'; // or any other placeholder you want to use
-            }
-                        
-            if (request && item) {
-                // Process request and item here
-                // Ensure that both request and item objects exist before accessing their properties
                 let itemName = request.item_name || 'Unknown';
-                requestResponse.results.forEach(request => {
-                    itemNameToID[request.item_name] = request.item;
-                });
-        
-                console.log(itemNameToID);
-                //Map item with item_name
-                let itemID = itemNameToID[itemName];
-        
-                if (itemID) {
-                    console.log(`The ID for '${itemName}' is ${itemID}`);
-                    // Here you can use itemID for your POST request
-                } else {
-                    console.log(`Item name '${itemName}' not found.`);
-                }
-
+                itemNameToID[itemName] = request.item; // Replace 'itemId' with the actual property name
                 itemNames.add(itemName);
 
                 let vendor = item.vendor || 'Unknown';
                 let catalog = item.catalog || 'Unknown';
                 let channel = item.channel || 'Unknown';
                 let notesButton = `<button class="btn btn-link note-btn" data-notes="${request.request_notes}">View Notes</button>`;
-
 
                 dataSet.push([
                     request.owner_username, 
@@ -86,15 +76,12 @@ async function getAllRequest() {
                     item.location,
                     notesButton,
                     request.request_date,
-                    url , // Use the updated linkHtml
+                    url,
                     request.status, 
-                    itemID
-                ])
-                // Rest of your processing code for request and item...
+                    request.itemId // Replace with actual item ID property
+                ]);
             }
-
-           
-        }
+        });
         new DataTable('#all-request', {
             columns: [
                 { title: 'Owner' },
@@ -229,18 +216,49 @@ async function getAllRequest() {
             }
         }
 
-
-    // Function to handle form submission
-    function submitForm() {
-        // Prevent the default form submission if needed
-        // event.preventDefault();
+        async function fetchCurrentUser() {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                console.error('No token found');
+                return null;
+            }
+        
+            try {
+                const response = await fetch('http://127.0.0.1:8000/api/users/', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': 'Token ' + token
+                    }
+                });
+                if (response.ok) {
+                    const userDetails = await response.json();
+                    return userDetails; // Contains user ID and username
+                } else {
+                    console.error('Failed to fetch user details:', response.status);
+                    return null;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                return null;
+            }
+        }
         
 
+
+    // Function to handle form submission
+    async function submitForm() {
+        // Prevent the default form submission if needed
+        // event.preventDefault();
+        const currentUser = await fetchCurrentUser();
+        if (!currentUser) {
+            console.error('Unable to fetch current user details');
+            return; // Stop further execution if user details are not available
+        }
         // Gather data from the form
         var formData = {
             // owner will be use when apply authtication that login will its user ID and user for post
 
-                owner: 1, //need to change to current user later
+                owner: currentUser.count, //need to change to current user later
                 item: $('#itemIDInput').val(),
                 qty: parseInt(document.getElementById('quantityRequestedInput').value),
                 price: parseFloat(document.getElementById('unitPriceInput').value),
@@ -260,21 +278,41 @@ async function getAllRequest() {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
+              ...authHeader
             },
             body: JSON.stringify(formData),
           })
-          .then(response => response.json())
-          .then(data => {
-            console.log('Success:', data);
-            // Handle success (e.g., show a message, clear the form)
-          })
-          .catch((error) => {
-            console.error('Error:', error);
-            // Handle errors here
-          });
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok: ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Success:', data);
+                alert('Request create success'); // Display success message
+                // Optionally, you can clear the form or redirect the user
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('Error creating request: ' + error); // Display error message
+        });
     }
 
+    async function displayCurrentUserName() {
+        const currentUser = await fetchCurrentUser();
+        if (currentUser) {
+            document.getElementById('ownerName').value = currentUser.username; // Assuming 'username' is the field name
+        } else {
+            console.error('Unable to fetch current user details');
+            // Handle error, like redirecting to login or showing a message
+        }
+    }
     
+    document.addEventListener('DOMContentLoaded', function() {
+        displayCurrentUserName();
+        // ... other initialization code ...
+    });
 
     // Attach event listener to the submit button
     var submitButton = document.getElementById('submitRequest');

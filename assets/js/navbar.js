@@ -1,8 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Example condition: Change this based on how you check the user's login status
-    const isLoggedIn = false; // Set this to true if the user is logged in
+    const isLoggedIn = checkLoginStatus();
+    const navbarHtml = createNavbarHtml(isLoggedIn);
 
-    const navbarHtml = `
+    document.body.insertAdjacentHTML('afterbegin', navbarHtml);
+    attachLogoutEvent(); // Attach event listener for logout if the user is logged in
+});
+
+function checkLoginStatus() {
+    const token = localStorage.getItem('token');
+    return !!token; // Convert to boolean: true if token exists, false otherwise
+}
+
+function createNavbarHtml(isLoggedIn) {
+    return `
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="search-page.html">iLab</a>
@@ -24,14 +34,14 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <a class="nav-link" href="request-all.html">All Request</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <img src="assets/images/profile/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="javascript:void(0)">My Request</a></li>
                                     <li><a class="dropdown-item" href="javascript:void(0)">My Account</a></li>
                                     <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="login.html">Logout</a></li>
+                                    <li><a class="dropdown-item" href="javascript:void(0)" id="logoutLink">Logout</a></li>
                                 </ul>
                             </li>`
                         : `
@@ -41,9 +51,19 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         </div>
     </nav>`;
-    
+}
 
-        document.body.insertAdjacentHTML('afterbegin', navbarHtml);
-        
-    
-});
+function attachLogoutEvent() {
+    const logoutLink = document.getElementById('logoutLink');
+    if (logoutLink) {
+        logoutLink.addEventListener('click', function(event) {
+            event.preventDefault();
+            logout();
+        });
+    }
+}
+
+function logout() {
+    localStorage.removeItem('token');
+    window.location.href = 'login.html'; // Redirect to login page after logout
+}

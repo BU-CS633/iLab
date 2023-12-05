@@ -23,17 +23,37 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         console.log(formData)
 
+        // Retrieve the token from localStorage
+        const token = localStorage.getItem('token');
+        if (!token) {
+            console.error('No authentication token found');
+            return; // Optionally, redirect to login page or show a message
+        }
+
         // Example: Send a POST request to your server endpoint
         fetch('http://127.0.0.1:8000/api/items/', {
             method: 'POST',
             body: JSON.stringify(formData), // Convert formData to JSON
             headers: {
                 'Content-Type': 'application/json', // Set the content type to JSON
+                'Authorization': 'Token ' + token // Include the token
             },
         })
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(error => console.error('Error:', error));
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+            alert('Item create success'); // Alert for successful creation
+            form.reset(); // Optional: Reset the form after successful submission
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error creating item: ' + error); // Alert for error
+        });
     });
 
     // Clear form
