@@ -87,6 +87,7 @@ async function getAllRequest() {
             columns: [
                 { title: 'Owner' },
                 { title: 'Item' },
+                { title: 'Item ID' },
                 { title: 'Vendor' },
                 { title: 'Catalog' },
                 { title: 'Channel' },
