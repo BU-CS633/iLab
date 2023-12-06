@@ -37,6 +37,12 @@ async function getAllItems(searchQuery = '') {
                 (item.catalog && item.catalog.toLowerCase().includes(searchQuery.toLowerCase()))
             );
         }
+
+        function generateLinkHtml(link) {
+            let itemLink = link ? (link.startsWith('http://') || link.startsWith('https://') ? link : 'http://' + link) : 'No link';
+            itemLink = itemLink !== 'No link' ? '<a href="' + itemLink + '" target="_blank">Link</a>' : 'No link';
+            return itemLink;
+          }
         
             const dataSet = filteredData.map(item => [
                 item.name,
@@ -50,7 +56,7 @@ async function getAllItems(searchQuery = '') {
                 item.lastReceivedDate ?? 'N/A',
                 item.channel ?? 'N/A',
                 item.location ?? 'N/A',
-                item.link ?? 'N/A',
+                generateLinkHtml(item.link),
                 item.notes ?? 'N/A'
             ]);
 
@@ -58,7 +64,7 @@ async function getAllItems(searchQuery = '') {
             if ($.fn.DataTable.isDataTable('#inventory-all')) {
                 $('#inventory-all').DataTable().clear().destroy();
             }
-            console.log(dataSet)
+            // console.log(dataSet)
 
             $('#inventory-all').DataTable({
                 data: dataSet,

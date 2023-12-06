@@ -67,7 +67,8 @@ async function getAllRequest() {
                 
                 dataSet.push([
                     request.owner_username, 
-                    itemName, 
+                    itemName,
+                    itemId, 
                     vendor, 
                     catalog, 
                     channel, 
