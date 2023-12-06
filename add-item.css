@@ -1,0 +1,133 @@
+/* Add Item Modal Styles */
+.modal-content {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    background-color: #f4f7f8;
+    max-width: 500px; /* Set your desired max width */
+    margin: 10px auto;
+    padding: 20px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.modal-header {
+    background-color: #1abc9c;
+    color: #fff;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom: none;
+    padding: 20px;
+    text-align: center;
+}
+
+.modal-title {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-footer {
+    border-top: none;
+    padding: 10px 20px;
+    background-color: #e8eeef;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+/* Form Styles */
+.add-item-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.add-item-form .form-group {
+    margin-bottom: 30px;
+}
+
+.add-item-form input[type="text"],
+.add-item-form input[type="date"],
+.add-item-form input[type="datetime"],
+.add-item-form input[type="email"],
+.add-item-form input[type="number"],
+.add-item-form input[type="search"],
+.add-item-form input[type="time"],
+.add-item-form input[type="url"],
+.add-item-form textarea,
+.add-item-form select {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 4px;
+    font-size: 15px;
+    margin: 0;
+    outline: 0;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    background-color: #e8eeef;
+    color: #8a97a0;
+    -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+    margin-bottom: 30px;
+}
+
+.add-item-form input[type="text"]:focus,
+.add-item-form input[type="date"]:focus,
+.add-item-form input[type="datetime"]:focus,
+.add-item-form input[type="email"]:focus,
+.add-item-form input[type="number"]:focus,
+.add-item-form input[type="search"]:focus,
+.add-item-form input[type="time"]:focus,
+.add-item-form input[type="url"]:focus,
+.add-item-form textarea:focus,
+.add-item-form select:focus {
+    background: #d2d9dd;
+}
+
+.add-item-form select {
+    -webkit-appearance: menulist-button;
+    height: 35px;
+}
+
+.add-item-form .number {
+    background: #1abc9c;
+    color: #fff;
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    font-size: 0.8em;
+    margin-right: 4px;
+    line-height: 30px;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+    border-radius: 15px 15px 15px 0px;
+}
+
+.add-item-form input[type="submit"],
+.add-item-form input[type="button"] {
+    position: relative;
+    display: block;
+    padding: 19px 39px 18px 39px;
+    color: #fff;
+    margin: 0 auto;
+    background: #1abc9c;
+    font-size: 18px;
+    text-align: center;
+    font-style: normal;
+    width: 100%;
+    border: 1px solid #16a085;
+    border-width: 1px 1px 3px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.add-item-form input[type="submit"]:hover,
+.add-item-form input[type="button"]:hover {
+    background: #109177;
+}

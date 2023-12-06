@@ -4,12 +4,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Modernize Free</title>
+  <title>ItemList</title>
   <link rel="shortcut icon" type="image/png" href="assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="assets/css/styles.min.css" />
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
-  <link rel="stylesheet" href="./assets/css/tabposition.css">
-  <link rel="stylesheet" href="./assets/css/buttonposition.css">
+  <link rel="stylesheet" href="tab/topBar/topBar.css">
+
 </head>
 
 <body>
@@ -17,6 +17,9 @@
   <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-header-position="fixed">
     <!--  Main wrapper -->
     <div class="body-wrapper">
+      <!--  Header Start -->
+      <header class="app-header">
+      </header>
       <!--  Header End -->
       <div class="container-fluid">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -241,11 +244,10 @@
   <script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
   <script src="assets/js/getallitem.js"></script>
-  <script src="assets/js/script.js"></script>
+  <script src="assets/js/navbar.js"></script>
 
   <script>
     getAllItems();
-    getAllRequest();
   </script>
 
 </body>
