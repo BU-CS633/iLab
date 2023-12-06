@@ -80,7 +80,6 @@ async function getAllRequest() {
                     request.request_date,
                     url,
                     request.status, 
-                    request.itemId // Replace with actual item ID property
                 ]);
             }
         });

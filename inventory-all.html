@@ -25,7 +25,7 @@
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item">
             <a class="nav-link active" id="request-tab" data-bs-toggle="tab" href="#request-pane" role="tab"
-              aria-controls="request" aria-selected="true">Request</a>
+              aria-controls="request" aria-selected="true">My Request</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" id="inventory-tab" data-bs-toggle="tab" href="#inventory-pane" role="tab"
@@ -64,7 +64,6 @@
                     </div>
                     <div id="myTableContainer">
                       <table id="inventory-all" class="display">
-
                       </table>
                     </div>
                   </div>
@@ -240,14 +239,32 @@
       </div>
     </div>
   </div>
+  <!-- Request Note -->
+  <div class="modal fade" id="notesModal" tabindex="-1" role="dialog" aria-labelledby="notesModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="notesModalLabel">Request Notes</h5>
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button> -->
+            </div>
+            <div class="modal-body">
+                <!-- Notes will go here -->
+            </div>
+        </div>
+    </div>
+</div>
   <script src="assets/libs/jquery/dist/jquery.min.js"></script>
   <script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-  <script src="assets/js/getallitem.js"></script>
+  <script src="assets/js/get-all-item.js"></script>
+  <script src="assets/js/my-request.js"></script>
   <script src="assets/js/navbar.js"></script>
 
   <script>
     getAllItems();
+    getAllRequest();
   </script>
 
 </body>
