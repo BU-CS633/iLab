@@ -24,18 +24,18 @@
       <div class="container-fluid">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item">
-            <a class="nav-link active" id="request-tab" data-bs-toggle="tab" href="#request-pane" role="tab"
+            <a class="nav-link " id="request-tab" data-bs-toggle="tab" href="#request-pane" role="tab"
               aria-controls="request" aria-selected="true">My Request</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="inventory-tab" data-bs-toggle="tab" href="#inventory-pane" role="tab"
+            <a class="nav-link active" id="inventory-tab" data-bs-toggle="tab" href="#inventory-pane" role="tab"
               aria-controls="inventory" aria-selected="false">Inventory</a>
           </li>
         </ul>
         <br>
         <!--  Row 1 -->
         <div class="tab-content" id="myTabContent">
-          <div class="tab-pane fade show active" id="request-pane" role="tabpanel" aria-labelledby="request-tab">
+          <div class="tab-pane fade" id="request-pane" role="tabpanel" aria-labelledby="request-tab">
             <div class="row">
               <br>
               <div class="col-lg-12 d-flex align-items-strech">
@@ -53,7 +53,7 @@
               </div>
             </div>
           </div>
-          <div class="tab-pane fade" id="inventory-pane" role="tabpanel" aria-labelledby="inventory-tab">
+          <div class="tab-pane fade show active" id="inventory-pane" role="tabpanel" aria-labelledby="inventory-tab">
             <div class="row">
               <br>
               <div class="col-lg-12 d-flex align-items-strech">
@@ -97,39 +97,39 @@
 
 
         <div class="modal-body">
-            <h4>Item</h4>
-            <div class="mb-3">
-              <label for="fullname" class="form-label">Full name</label>
-              <input type="text" class="form-control" id="fullname">
-            </div>
-            <div class="mb-3">
-              <label for="vendor" class="form-label">Vendor</label>
-              <input type="text" class="form-control" id="vendor">
-            </div>
-            <div class="mb-3">
-              <label for="distributor" class="form-label">Distributor</label>
-              <input type="text" class="form-control" id="distributor">
-            </div>
-            <div class="mb-3">
-              <label for="channel" class="form-label">Channel</label>
-              <input type="text" class="form-control" id="channel">
-            </div>
-            <div class="mb-3">
-              <label for="catalog" class="form-label">Catalog_#</label>
-              <input type="text" class="form-control" id="catalog">
-            </div>
-            <div class="mb-3">
-              <label for="unitsize" class="form-label">Unit_Size</label>
-              <input type="text" class="form-control" id="unitsize">
-            </div>
-            <div class="mb-3">
-              <label for="quantity" class="form-label">Quantity</label>
-              <input type="text" class="form-control" id="quantity">
-            </div>
-            <div class="mb-3">
-              <label for="unitprice" class="form-label">Unit Price</label>
-              <input type="text" class="form-control" id="unitprice">
-            </div>
+          <h4>Item</h4>
+          <div class="mb-3">
+            <label for="fullname" class="form-label">Full name</label>
+            <input type="text" class="form-control" id="fullname">
+          </div>
+          <div class="mb-3">
+            <label for="vendor" class="form-label">Vendor</label>
+            <input type="text" class="form-control" id="vendor">
+          </div>
+          <div class="mb-3">
+            <label for="distributor" class="form-label">Distributor</label>
+            <input type="text" class="form-control" id="distributor">
+          </div>
+          <div class="mb-3">
+            <label for="channel" class="form-label">Channel</label>
+            <input type="text" class="form-control" id="channel">
+          </div>
+          <div class="mb-3">
+            <label for="catalog" class="form-label">Catalog_#</label>
+            <input type="text" class="form-control" id="catalog">
+          </div>
+          <div class="mb-3">
+            <label for="unitsize" class="form-label">Unit_Size</label>
+            <input type="text" class="form-control" id="unitsize">
+          </div>
+          <div class="mb-3">
+            <label for="quantity" class="form-label">Quantity</label>
+            <input type="text" class="form-control" id="quantity">
+          </div>
+          <div class="mb-3">
+            <label for="unitprice" class="form-label">Unit Price</label>
+            <input type="text" class="form-control" id="unitprice">
+          </div>
 
         </div>
 
@@ -144,9 +144,9 @@
       <div class="modal-content">
         <div class="modal-header">
           <div>
-              <h1 id="nameRequest"></h1>
-              <span class="badge badge-custom">OWNER</span>
-              <span id="username"></span>
+            <h1 id="nameRequest"></h1>
+            <span class="badge badge-custom">OWNER</span>
+            <span id="username"></span>
           </div>
           <div class="column">
             <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Request Again</button>
@@ -158,81 +158,81 @@
 
 
         <div class="modal-body">
-            <h4>Item</h4>
-            <div class="mb-3">
-                <label for="fullnameRequest" class="form-label">Full name</label>
-                <input type="text" class="form-control" id="fullnameRequest" >
-            </div>
-            <div class="mb-3">
-                <label for="vendorRequest" class="form-label">Vendor</label>
-                <input type="text" class="form-control" id="vendorRequest">
-            </div>
-            <div class="mb-3">
-                <label for="distributorRequest" class="form-label">Distributor</label>
-                <input type="text" class="form-control" id="distributorRequest">
-            </div>
-            <div class="mb-3">
-                <label for="channelRequest" class="form-label">Channel</label>
-                <input type="text" class="form-control" id="channelRequest">
-            </div>
-            <div class="mb-3">
-                <label for="catalogRequest" class="form-label">Catalog_#</label>
-                <input type="text" class="form-control" id="catalogRequest">
-            </div>
-            <div class="mb-3">
-                <label for="unitsizeRequest" class="form-label">Unit_Size</label>
-                <input type="text" class="form-control" id="unitsizeRequest">
-            </div>
-            <div class="mb-3">
-                <label for="quantityRequest" class="form-label">Quantity</label>
-                <input type="text" class="form-control" id="quantityRequest">
-            </div>
-            <div class="mb-3">
-                <label for="unitpriceRequest" class="form-label">Unit Price</label>
-                <input type="text" class="form-control" id="unitpriceRequest">
-            </div>
-            <div class="mb-3">
-                <label for="totalpriceRequest" class="form-label">Total Price</label>
-                <input type="text" class="form-control" id="totalpriceRequest">
-            </div>
+          <h4>Item</h4>
+          <div class="mb-3">
+            <label for="fullnameRequest" class="form-label">Full name</label>
+            <input type="text" class="form-control" id="fullnameRequest">
+          </div>
+          <div class="mb-3">
+            <label for="vendorRequest" class="form-label">Vendor</label>
+            <input type="text" class="form-control" id="vendorRequest">
+          </div>
+          <div class="mb-3">
+            <label for="distributorRequest" class="form-label">Distributor</label>
+            <input type="text" class="form-control" id="distributorRequest">
+          </div>
+          <div class="mb-3">
+            <label for="channelRequest" class="form-label">Channel</label>
+            <input type="text" class="form-control" id="channelRequest">
+          </div>
+          <div class="mb-3">
+            <label for="catalogRequest" class="form-label">Catalog_#</label>
+            <input type="text" class="form-control" id="catalogRequest">
+          </div>
+          <div class="mb-3">
+            <label for="unitsizeRequest" class="form-label">Unit_Size</label>
+            <input type="text" class="form-control" id="unitsizeRequest">
+          </div>
+          <div class="mb-3">
+            <label for="quantityRequest" class="form-label">Quantity</label>
+            <input type="text" class="form-control" id="quantityRequest">
+          </div>
+          <div class="mb-3">
+            <label for="unitpriceRequest" class="form-label">Unit Price</label>
+            <input type="text" class="form-control" id="unitpriceRequest">
+          </div>
+          <div class="mb-3">
+            <label for="totalpriceRequest" class="form-label">Total Price</label>
+            <input type="text" class="form-control" id="totalpriceRequest">
+          </div>
 
-            <h4>Received</h4>
-            <div class="mb-3">
-                <label for="purchaseorderRequest" class="form-label">Purchase Order</label>
-                <input type="text" class="form-control" id="purchaseorderRequest">
-            </div>
-            <div class="mb-3">
-                <label for="dateRequest" class="form-label">Date_Request</label>
-                <input type="text" class="form-control" id="dateRequest">
-            </div>
-            <div class="mb-3">
-                <label for="dateorderRequest" class="form-label">Date_Order</label>
-                <input type="text" class="form-control" id="dateorderRequest">
-            </div>
-            <div class="mb-3">
-                <label for="orderedbyRequest" class="form-label">Ordered_By</label>
-                <input type="text" class="form-control" id="orderedbyRequest">
-            </div>
-            <div class="mb-3">
-                <label for="linkRequest" class="form-label">Link</label>
-                <input type="text" class="form-control" id="linkRequest">
-            </div>
-            <div class="mb-3">
-                <label for="lablocationRequest" class="form-label">Lab_Loacation</label>
-                <input type="text" class="form-control" id="lablocationRequest">
-            </div>
-            <div class="mb-3">
-                <label for="datereceivedRequest" class="form-label">Date_Received</label>
-                <input type="text" class="form-control" id="datereceivedRequest">
-            </div>
-            <div class="mb-3">
-                <label for="receivedbyRequest" class="form-label">Received_By</label>
-                <input type="text" class="form-control" id="receivedbyRequest">
-            </div>
-            <div class="mb-3">
-                <label for="notesRequest" class="form-label">Notes</label>
-                <input type="text" class="form-control" id="notesRequest">
-            </div>
+          <h4>Received</h4>
+          <div class="mb-3">
+            <label for="purchaseorderRequest" class="form-label">Purchase Order</label>
+            <input type="text" class="form-control" id="purchaseorderRequest">
+          </div>
+          <div class="mb-3">
+            <label for="dateRequest" class="form-label">Date_Request</label>
+            <input type="text" class="form-control" id="dateRequest">
+          </div>
+          <div class="mb-3">
+            <label for="dateorderRequest" class="form-label">Date_Order</label>
+            <input type="text" class="form-control" id="dateorderRequest">
+          </div>
+          <div class="mb-3">
+            <label for="orderedbyRequest" class="form-label">Ordered_By</label>
+            <input type="text" class="form-control" id="orderedbyRequest">
+          </div>
+          <div class="mb-3">
+            <label for="linkRequest" class="form-label">Link</label>
+            <input type="text" class="form-control" id="linkRequest">
+          </div>
+          <div class="mb-3">
+            <label for="lablocationRequest" class="form-label">Lab_Loacation</label>
+            <input type="text" class="form-control" id="lablocationRequest">
+          </div>
+          <div class="mb-3">
+            <label for="datereceivedRequest" class="form-label">Date_Received</label>
+            <input type="text" class="form-control" id="datereceivedRequest">
+          </div>
+          <div class="mb-3">
+            <label for="receivedbyRequest" class="form-label">Received_By</label>
+            <input type="text" class="form-control" id="receivedbyRequest">
+          </div>
+          <div class="mb-3">
+            <label for="notesRequest" class="form-label">Notes</label>
+            <input type="text" class="form-control" id="notesRequest">
+          </div>
 
         </div>
 
@@ -240,21 +240,22 @@
     </div>
   </div>
   <!-- Request Note -->
-  <div class="modal fade" id="notesModal" tabindex="-1" role="dialog" aria-labelledby="notesModalLabel" aria-hidden="true">
+  <div class="modal fade" id="notesModal" tabindex="-1" role="dialog" aria-labelledby="notesModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="notesModalLabel">Request Notes</h5>
-                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="notesModalLabel">Request Notes</h5>
+          <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button> -->
-            </div>
-            <div class="modal-body">
-                <!-- Notes will go here -->
-            </div>
         </div>
+        <div class="modal-body">
+          <!-- Notes will go here -->
+        </div>
+      </div>
     </div>
-</div>
+  </div>
   <script src="assets/libs/jquery/dist/jquery.min.js"></script>
   <script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
@@ -268,4 +269,5 @@
   </script>
 
 </body>
+
 </html>
