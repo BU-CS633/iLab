@@ -46,7 +46,6 @@ async function getAllRequest() {
         itemsData.forEach(item => {
             itemLookup[item.id] = item; // Replace 'id' with your actual item identifier
         });
-        
     
         requestsData.forEach(request => {
             let item = itemLookup[request.item]; // Replace 'itemId' with your actual property name in request that refers to the item ID
@@ -58,12 +57,17 @@ async function getAllRequest() {
                 let itemId = request.item;
                 itemNameToID[itemName] = itemId; // Replace 'itemId' with the actual property name
                 itemNames.add(itemName);
-                // console.log(itemNameToID)
+                // console.log(item.id)
 
                 let vendor = item.vendor || 'Unknown';
                 let catalog = item.catalog || 'Unknown';
                 let channel = item.channel || 'Unknown';
                 let notesButton = `<button class="btn btn-link note-btn" data-notes="${request.request_notes}">View Notes</button>`;
+
+                let actionColumnContent = request.status;
+                if (request.status !== 'Approved' && request.user_is_admin) {
+                    actionColumnContent += `<button class="btn btn-approve" data-id="${request.id}">Approve</button>`;
+                }
                 
                 dataSet.push([
                     request.owner_username, 
@@ -79,7 +83,7 @@ async function getAllRequest() {
                     notesButton,
                     request.request_date,
                     url,
-                    request.status, 
+                    actionColumnContent,
                 ]);
             }
         });
@@ -98,11 +102,11 @@ async function getAllRequest() {
                 { title: 'Request Notes' },             
                 { title: 'Date Request' },
                 { title: 'Link' },
-                { title: 'Status' },
+                { title: 'Status', orderable: true, defaultContent: '' }, // If button is in 'Status' column
                 {
                     title: 'Action', 
                     data: null, // No specific data field is used for this column
-                    defaultContent: '<button class="btn btn-info w-100 py-1">Request Again</button>',
+                    defaultContent: '<button class="btn request-again w-100 py-1">Request Again</button>',
                     orderable: false // This column is not orderable
                 }
             ],
@@ -122,11 +126,45 @@ async function getAllRequest() {
      
 
     $(document).ready(function() {
-        $('#all-request').on('click', '.btn-info', function () {
+        $('#all-request').on('click', '.request-again', function () {
             var data = $('#all-request').DataTable().row($(this).parents('tr')).data();
             populateForm(data);
         });
     });
+
+    //approve button
+    $(document).on('click', '.btn-approve', function() {
+        let requestId = $(this).data('id'); // Retrieve the request ID stored in the data-id attribute
+        
+        approveRequest(requestId, function() {
+            alert("Request approved successfully!");
+            location.reload(); // Refresh the page
+        });
+    });
+    
+    function approveRequest(requestId, onSuccess) {
+        const token = localStorage.getItem('token'); // Retrieve your auth token
+        const authHeader = token ? { 'Authorization': 'Token ' + token } : {};
+    
+        $.ajax({
+            url: `http://127.0.0.1:8000/api/request/approve/${requestId}/`, // Adjust URL as needed
+            method: 'GET', // Use POST or appropriate method as per your backend API
+            headers: authHeader,
+            success: function(response) {
+                // Handle successful approval
+                console.log("Request approved successfully:", response);
+                onSuccess(); // Call the onSuccess callback
+                // Optionally, update the UI to reflect the approval
+            },
+            error: function(xhr, status, error) {
+                // Handle errors
+                console.error("Error approving request:", xhr.responseText);
+            }
+        });
+    }
+    
+    
+
 
     function populateItemDropdown(itemNames) {
         var $itemNameDropdown = document.getElementById('itemNameInput');
