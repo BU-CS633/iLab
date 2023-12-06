@@ -101,7 +101,9 @@ async function getAllRequest() {
                 ]);
             }
         });
-        new DataTable('#all-request', {
+
+        $('#my-request').DataTable({
+            data: dataSet,
             columns: [
                 { title: 'Owner' },
                 { title: 'Item' },
@@ -123,8 +125,7 @@ async function getAllRequest() {
                 //     defaultContent: '<button class="btn btn-info w-100 py-1">Request Again</button>',
                 //     orderable: false // This column is not orderable
                 // }
-            ],
-            data: dataSet,
+            ]
         });
     } catch (error) {
         console.error("Error fetching data: ", error);
