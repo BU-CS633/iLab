@@ -1,7 +1,11 @@
 async function getAllItems(searchQuery = '') {
     try {
         let allItems = [];
-        let url = "http://127.0.0.1:8000/api/items/";
+        var HOST = "http://127.0.0.1:8000"
+        if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+            HOST = "https://ilab-api.onrender.com"
+        }
+        let url = HOST + "/api/items/";
         let hasNextPage = true;
 
         const token = localStorage.getItem('token');
@@ -42,49 +46,49 @@ async function getAllItems(searchQuery = '') {
             let itemLink = link ? (link.startsWith('http://') || link.startsWith('https://') ? link : 'http://' + link) : 'No link';
             itemLink = itemLink !== 'No link' ? '<a href="' + itemLink + '" target="_blank">Link</a>' : 'No link';
             return itemLink;
-          }
-        
-            const dataSet = filteredData.map(item => [
-                item.name,
-                item.fullName,
-                item.unitSize ?? 'N/A', // 'N/A' for null values
-                item.qty,
-                item.price ?? 'N/A',
-                item.vendor ?? 'N/A',
-                item.catalog ?? 'N/A',
-                item.lastOrderDate ?? 'N/A',
-                item.lastReceivedDate ?? 'N/A',
-                item.channel ?? 'N/A',
-                item.location ?? 'N/A',
-                generateLinkHtml(item.link),
-                item.notes ?? 'N/A'
-            ]);
+        }
 
-            // Destroy the existing DataTable and recreate it with new data
-            if ($.fn.DataTable.isDataTable('#inventory-all')) {
-                $('#inventory-all').DataTable().clear().destroy();
-            }
-            // console.log(dataSet)
+        const dataSet = filteredData.map(item => [
+            item.name,
+            item.fullName,
+            item.unitSize ?? 'N/A', // 'N/A' for null values
+            item.qty,
+            item.price ?? 'N/A',
+            item.vendor ?? 'N/A',
+            item.catalog ?? 'N/A',
+            item.lastOrderDate ?? 'N/A',
+            item.lastReceivedDate ?? 'N/A',
+            item.channel ?? 'N/A',
+            item.location ?? 'N/A',
+            generateLinkHtml(item.link),
+            item.notes ?? 'N/A'
+        ]);
 
-            $('#inventory-all').DataTable({
-                data: dataSet,
-                columns: [
-                    { title: 'Name' },
-                    { title: 'Full Name' },
-                    { title: 'Unit Size' },
-                    { title: 'Quantity' },
-                    { title: 'Price' },
-                    { title: 'Vendor' },
-                    { title: 'Catalog' },
-                    { title: 'Last Order Date' },
-                    { title: 'Last Received Date' },
-                    { title: 'Channel' },
-                    { title: 'Location' },
-                    { title: 'Link' },
-                    { title: 'Notes' }
-                ]
-            });
-        } catch (error) {
+        // Destroy the existing DataTable and recreate it with new data
+        if ($.fn.DataTable.isDataTable('#inventory-all')) {
+            $('#inventory-all').DataTable().clear().destroy();
+        }
+        // console.log(dataSet)
+
+        $('#inventory-all').DataTable({
+            data: dataSet,
+            columns: [
+                { title: 'Name' },
+                { title: 'Full Name' },
+                { title: 'Unit Size' },
+                { title: 'Quantity' },
+                { title: 'Price' },
+                { title: 'Vendor' },
+                { title: 'Catalog' },
+                { title: 'Last Order Date' },
+                { title: 'Last Received Date' },
+                { title: 'Channel' },
+                { title: 'Location' },
+                { title: 'Link' },
+                { title: 'Notes' }
+            ]
+        });
+    } catch (error) {
         console.error('Error fetching items:', error);
     }
 }
