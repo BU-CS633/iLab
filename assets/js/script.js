@@ -57,15 +57,17 @@ async function getAllRequest() {
                 let itemId = request.item;
                 itemNameToID[itemName] = itemId; // Replace 'itemId' with the actual property name
                 itemNames.add(itemName);
-                // console.log(item.id)
 
                 let vendor = item.vendor || 'Unknown';
                 let catalog = item.catalog || 'Unknown';
                 let channel = item.channel || 'Unknown';
+
                 let notesButton = `<button class="btn btn-link note-btn" data-notes="${request.request_notes}">View Notes</button>`;
+                // console.log(item.id)
 
                 let actionColumnContent = request.status;
-                if (request.status !== 'Approved' && request.user_is_admin) {
+                
+                if (request.status !== 'approved' && request.user_is_admin) {
                     actionColumnContent += `<button class="btn btn-approve" data-id="${request.id}">Approve</button>`;
                 }
                 
@@ -218,6 +220,8 @@ async function getAllRequest() {
             $('#linkInput').val('');
         }      
 
+        console.log($('#catalogInput').val())
+
         var itemID = data[13]; // Assuming itemID is at index 13
         $('#itemIDInput').val(itemID); // Set the itemID in the hidden input
 
@@ -291,19 +295,24 @@ async function getAllRequest() {
             return; // Stop execution if no user ID
         }
 
-        console.log(userId)
+        // console.log(userId)
+
+        $(document).ready(function() {
+            console.log('Value of #quantityRequestedInput:', $('#quantityRequestedInput').val());
+        });
+        
         
         // Gather data from the form
         var formData = {
             // owner will be use when apply authtication that login will its user ID and user for post
                 owner: userId, //need to change to current user later
                 item: itemNameToID[$('#itemNameInput').val()],
-                qty: parseInt(document.getElementById('quantityRequestedInput').value),
+                quantity_requested: parseInt(document.getElementById('quantityRequestedInput').value) || 0,
                 price: parseFloat(document.getElementById('unitPriceInput').value),
                 vendor: document.getElementById('vendorInput').value,
                 channel: document.getElementById('channelInput').value,
                 link: document.getElementById('linkInput').value,
-                notes: document.getElementById('notesTextarea').value,
+                request_notes: document.getElementById('notesTextarea').value,
                 request_date: document.getElementById('dateRequestInput').value,
             // Add other fields as needed
         };
