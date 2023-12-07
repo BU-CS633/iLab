@@ -38,9 +38,9 @@ async function getAllRequest() {
     }
 
     try {
-        var HOST = "https://ilab-api.onrender.com"
-        if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
-            HOST = "http://127.0.0.1:8000"
+        var HOST = "http://127.0.0.1:8000"
+        if (location.hostname === "ilab-cs633.onrender.com") {
+            HOST = "https://ilab-api.onrender.com"
         }
         let requestsData = await fetchAllData(HOST + "/api/requests/");
         let itemsData = await fetchAllData(HOST + "/api/items/");
@@ -70,7 +70,7 @@ async function getAllRequest() {
                 // console.log(item.id)
 
                 let actionColumnContent = request.status;
-                
+
                 if (request.status !== 'approved' && request.user_is_admin) {
                     actionColumnContent += `<button class="btn btn-approve" data-id="${request.id}">Approve</button>`;
                 }
@@ -151,9 +151,9 @@ async function getAllRequest() {
     function approveRequest(requestId, onSuccess) {
         const token = localStorage.getItem('token'); // Retrieve your auth token
         const authHeader = token ? { 'Authorization': 'Token ' + token } : {};
-        var HOST = "https://ilab-api.onrender.com"
-        if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
-            HOST = "http://127.0.0.1:8000"
+        var HOST = "http://127.0.0.1:8000"
+        if (location.hostname === "ilab-cs633.onrender.com") {
+            HOST = "https://ilab-api.onrender.com"
         }
         $.ajax({
             url: HOST + `/api/request/approve/${requestId}/`, // Adjust URL as needed
@@ -225,7 +225,7 @@ async function getAllRequest() {
         } else {
             // Set input value to empty if no link is provided
             $('#linkInput').val('');
-        }      
+        }
 
         var itemID = data[13]; // Assuming itemID is at index 13
         $('#itemIDInput').val(itemID); // Set the itemID in the hidden input
@@ -270,9 +270,9 @@ async function getAllRequest() {
         const token = localStorage.getItem('token'); // Retrieve the token from local storage
         async function fetchCurrentUserId() {
             try {
-                var HOST = "https://ilab-api.onrender.com"
-                if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
-                    HOST = "http://127.0.0.1:8000"
+                var HOST = "http://127.0.0.1:8000"
+                if (location.hostname === "ilab-cs633.onrender.com") {
+                    HOST = "https://ilab-api.onrender.com"
                 }
                 const response = await fetch(HOST + '/api/current_user/', {
                     headers: new Headers({
@@ -305,28 +305,28 @@ async function getAllRequest() {
         }
 
         console.log(userId)
-        
+
         // Gather data from the form
         var formData = {
             // owner will be use when apply authtication that login will its user ID and user for post
-                owner: userId, //need to change to current user later
-                item: itemNameToID[$('#itemNameInput').val()],
-                qty: parseInt(document.getElementById('quantityRequestedInput').value),
-                price: parseFloat(document.getElementById('unitPriceInput').value),
-                vendor: document.getElementById('vendorInput').value,
-                channel: document.getElementById('channelInput').value,
-                link: document.getElementById('linkInput').value,
-                notes: document.getElementById('notesTextarea').value,
-                request_date: document.getElementById('dateRequestInput').value,
+            owner: userId, //need to change to current user later
+            item: itemNameToID[$('#itemNameInput').val()],
+            qty: parseInt(document.getElementById('quantityRequestedInput').value),
+            price: parseFloat(document.getElementById('unitPriceInput').value),
+            vendor: document.getElementById('vendorInput').value,
+            channel: document.getElementById('channelInput').value,
+            link: document.getElementById('linkInput').value,
+            notes: document.getElementById('notesTextarea').value,
+            request_date: document.getElementById('dateRequestInput').value,
             // Add other fields as needed
         };
 
 
         // Log formData to console for demonstration purposes
         console.log('Form Data:', formData);
-        var HOST = "https://ilab-api.onrender.com"
-        if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
-            HOST = "http://127.0.0.1:8000"
+        var HOST = "http://127.0.0.1:8000"
+        if (location.hostname === "ilab-cs633.onrender.com") {
+            HOST = "https://ilab-api.onrender.com"
         }
         fetch(HOST + '/api/requests/', {
             method: 'POST',

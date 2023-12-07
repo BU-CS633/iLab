@@ -4,9 +4,9 @@ document.getElementById('loginForm').addEventListener('submit', async function (
     const password = document.getElementById('password').value;
 
     try {
-        var HOST = "https://ilab-api.onrender.com"
-        if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
-            HOST = "http://127.0.0.1:8000"
+        var HOST = "http://127.0.0.1:8000"
+        if (location.hostname === "ilab-cs633.onrender.com") {
+            HOST = "https://ilab-api.onrender.com"
         }
         const response = await fetch(HOST + '/api/login/', { // Adjust URL as needed
             method: 'POST',
