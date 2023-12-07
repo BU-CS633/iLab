@@ -311,12 +311,12 @@ async function getAllRequest() {
             // owner will be use when apply authtication that login will its user ID and user for post
             owner: userId, //need to change to current user later
             item: itemNameToID[$('#itemNameInput').val()],
-            qty: parseInt(document.getElementById('quantityRequestedInput').value),
+            quantity_requested: parseInt(document.getElementById('quantityRequestedInput').value),
             price: parseFloat(document.getElementById('unitPriceInput').value),
             vendor: document.getElementById('vendorInput').value,
             channel: document.getElementById('channelInput').value,
             link: document.getElementById('linkInput').value,
-            notes: document.getElementById('notesTextarea').value,
+            request_notes: document.getElementById('notesTextarea').value,
             request_date: document.getElementById('dateRequestInput').value,
             // Add other fields as needed
         };
@@ -346,7 +346,7 @@ async function getAllRequest() {
                 console.log('Success:', data);
                 alert('Request create success'); // Display success message
                 // Optionally, you can clear the form or redirect the user
-                window.location.reload();
+                // window.location.reload();
             })
             .catch((error) => {
                 console.error('Error:', error);
