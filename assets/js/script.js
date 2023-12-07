@@ -38,9 +38,9 @@ async function getAllRequest() {
     }
 
     try {
-        var HOST = "http://127.0.0.1:8000"
-        if (location.hostname == "localhost" || location.hostname == "127.0.0.1") {
-            HOST = "https://ilab-api.onrender.com"
+        var HOST = "https://ilab-api.onrender.com"
+        if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+            HOST = "http://127.0.0.1:8000"
         }
         let requestsData = await fetchAllData(HOST + "/api/requests/");
         let itemsData = await fetchAllData(HOST + "/api/items/");
@@ -149,9 +149,9 @@ async function getAllRequest() {
     function approveRequest(requestId, onSuccess) {
         const token = localStorage.getItem('token'); // Retrieve your auth token
         const authHeader = token ? { 'Authorization': 'Token ' + token } : {};
-        var HOST = "http://127.0.0.1:8000"
-        if (location.hostname == "localhost" || location.hostname == "127.0.0.1") {
-            HOST = "https://ilab-api.onrender.com"
+        var HOST = "https://ilab-api.onrender.com"
+        if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+            HOST = "http://127.0.0.1:8000"
         }
         $.ajax({
             url: HOST + '/api/request/approve/${requestId}/', // Adjust URL as needed
@@ -268,9 +268,9 @@ async function getAllRequest() {
         const token = localStorage.getItem('token'); // Retrieve the token from local storage
         async function fetchCurrentUserId() {
             try {
-                var HOST = "http://127.0.0.1:8000"
-                if (location.hostname == "localhost" || location.hostname == "127.0.0.1") {
-                    HOST = "https://ilab-api.onrender.com"
+                var HOST = "https://ilab-api.onrender.com"
+                if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+                    HOST = "http://127.0.0.1:8000"
                 }
                 const response = await fetch(HOST + '/api/current_user/', {
                     headers: new Headers({
@@ -322,9 +322,9 @@ async function getAllRequest() {
 
         // Log formData to console for demonstration purposes
         console.log('Form Data:', formData);
-        var HOST = "http://127.0.0.1:8000"
-        if (location.hostname == "localhost" || location.hostname == "127.0.0.1") {
-            HOST = "https://ilab-api.onrender.com"
+        var HOST = "https://ilab-api.onrender.com"
+        if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+            HOST = "http://127.0.0.1:8000"
         }
         fetch(HOST + '/api/requests/', {
             method: 'POST',

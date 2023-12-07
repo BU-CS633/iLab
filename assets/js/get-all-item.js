@@ -1,9 +1,9 @@
 async function getAllItems(searchQuery = '') {
     try {
         let allItems = [];
-        var HOST = "http://127.0.0.1:8000"
-        if (location.hostname == "localhost" || location.hostname == "127.0.0.1") {
-            HOST = "https://ilab-api.onrender.com"
+        var HOST = "https://ilab-api.onrender.com"
+        if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+            HOST = "http://127.0.0.1:8000"
         }
         let url = HOST + "/api/items/";
         let hasNextPage = true;

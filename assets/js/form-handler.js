@@ -31,9 +31,9 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error('No authentication token found');
             return; // Optionally, redirect to login page or show a message
         }
-        var HOST = "http://127.0.0.1:8000"
-        if (location.hostname == "localhost" || location.hostname == "127.0.0.1") {
-            HOST = "https://ilab-api.onrender.com"
+        var HOST = "https://ilab-api.onrender.com"
+        if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+            HOST = "http://127.0.0.1:8000"
         }
         // Example: Send a POST request to your server endpoint
         fetch(HOST + '/api/items/', {
