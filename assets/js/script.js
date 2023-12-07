@@ -339,6 +339,7 @@ async function getAllRequest() {
                 console.log('Success:', data);
                 alert('Request create success'); // Display success message
                 // Optionally, you can clear the form or redirect the user
+                window.location.reload();
             })
             .catch((error) => {
                 console.error('Error:', error);
