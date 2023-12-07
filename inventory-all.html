@@ -4,10 +4,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Modernize Free</title>
+  <title>ItemList</title>
   <link rel="shortcut icon" type="image/png" href="assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="assets/css/styles.min.css" />
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+  <link rel="stylesheet" href="tab/topBar/topBar.css">
+
 </head>
 
 <body>
@@ -17,61 +19,239 @@
     <div class="body-wrapper">
       <!--  Header Start -->
       <header class="app-header">
-        <nav class="navbar navbar-expand-lg navbar-light">
-          <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
-            <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-              <a href="https://adminmart.com/product/modernize-free-bootstrap-admin-dashboard/" target="_blank"
-                class="btn btn-primary">Login</a>
-              <li class="nav-item dropdown">
-                <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
-                  aria-expanded="false">
-                  <img src="assets/images/profile/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">
-                </a>
-                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
-                  <div class="message-body">
-                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                      <i class="ti ti-user fs-6"></i>
-                      <p class="mb-0 fs-3">My Profile</p>
-                    </a>
-                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                      <i class="ti ti-mail fs-6"></i>
-                      <p class="mb-0 fs-3">My Account</p>
-                    </a>
-                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                      <i class="ti ti-list-check fs-6"></i>
-                      <p class="mb-0 fs-3">My Task</p>
-                    </a>
-                    <a href="./authentication-login.html" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </nav>
       </header>
       <!--  Header End -->
       <div class="container-fluid">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link " id="request-tab" data-bs-toggle="tab" href="#request-pane" role="tab"
+              aria-controls="request" aria-selected="true">My Request</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" id="inventory-tab" data-bs-toggle="tab" href="#inventory-pane" role="tab"
+              aria-controls="inventory" aria-selected="false">Inventory</a>
+          </li>
+        </ul>
+        <br>
         <!--  Row 1 -->
-        <div class="row">
-          <div class="col-lg-12 d-flex align-items-strech">
-            <div class="card w-100">
-              <div class="card-body">
-                <div class="mb-3 mb-sm-0">
-                  <h5 class="card-title fw-semibold">ItemList</h5>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade" id="request-pane" role="tabpanel" aria-labelledby="request-tab">
+            <div class="row">
+              <br>
+              <div class="col-lg-12 d-flex align-items-strech">
+                <div class="card w-100">
+                  <div class="card-body">
+                    <div class="mb-3 mb-sm-0">
+                      <h5 class="card-title fw-semibold"></h5>
+                    </div>
+                    <div id="myTableContainer">
+                      <table id="my-request" class="display">
+                      </table>
+                    </div>
+                  </div>
                 </div>
-                <div id="myTableContainer">
-                  <table id="inventory-all" class="display">
-
-                  </table>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade show active" id="inventory-pane" role="tabpanel" aria-labelledby="inventory-tab">
+            <div class="row">
+              <br>
+              <div class="col-lg-12 d-flex align-items-strech">
+                <div class="card w-100">
+                  <div class="card-body">
+                    <div class="mb-3 mb-sm-0">
+                      <h5 class="card-title fw-semibold"></h5>
+                    </div>
+                    <div id="myTableContainer">
+                      <table id="inventory-all" class="display">
+                      </table>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="py-6 px-6 text-center">
-          <p class="mb-0 fs-4">Design and Developed by <a href="https://adminmart.com/" target="_blank"
-              class="pe-1 text-primary text-decoration-underline">AdminMart.com</a> Distributed by <a
-              href="https://themewagon.com">ThemeWagon</a></p>
+      </div>
+    </div>
+  </div>
+  <!--Inventory Modal -->
+  <div class="modal fade" id="InventoryModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div>
+            <h5 class="modal-title" id="staticBackdropLabel">human NFAT engineered human NFAT engineered human</h5>
+            <label>owner</label>
+          </div>
+
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+          <div class="column">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Request Again</button>
+            <button type="button" class="btn btn-dark">Update</button>
+          </div>
+
+        </div>
+
+
+
+        <div class="modal-body">
+          <h4>Item</h4>
+          <div class="mb-3">
+            <label for="fullname" class="form-label">Full name</label>
+            <input type="text" class="form-control" id="fullname">
+          </div>
+          <div class="mb-3">
+            <label for="vendor" class="form-label">Vendor</label>
+            <input type="text" class="form-control" id="vendor">
+          </div>
+          <div class="mb-3">
+            <label for="distributor" class="form-label">Distributor</label>
+            <input type="text" class="form-control" id="distributor">
+          </div>
+          <div class="mb-3">
+            <label for="channel" class="form-label">Channel</label>
+            <input type="text" class="form-control" id="channel">
+          </div>
+          <div class="mb-3">
+            <label for="catalog" class="form-label">Catalog_#</label>
+            <input type="text" class="form-control" id="catalog">
+          </div>
+          <div class="mb-3">
+            <label for="unitsize" class="form-label">Unit_Size</label>
+            <input type="text" class="form-control" id="unitsize">
+          </div>
+          <div class="mb-3">
+            <label for="quantity" class="form-label">Quantity</label>
+            <input type="text" class="form-control" id="quantity">
+          </div>
+          <div class="mb-3">
+            <label for="unitprice" class="form-label">Unit Price</label>
+            <input type="text" class="form-control" id="unitprice">
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!--Request Modal -->
+  <div class="modal fade" id="RequestModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div>
+            <h1 id="nameRequest"></h1>
+            <span class="badge badge-custom">OWNER</span>
+            <span id="username"></span>
+          </div>
+          <div class="column">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Request Again</button>
+            <button type="button" class="btn btn-dark">Update</button>
+          </div>
+
+        </div>
+
+
+
+        <div class="modal-body">
+          <h4>Item</h4>
+          <div class="mb-3">
+            <label for="fullnameRequest" class="form-label">Full name</label>
+            <input type="text" class="form-control" id="fullnameRequest">
+          </div>
+          <div class="mb-3">
+            <label for="vendorRequest" class="form-label">Vendor</label>
+            <input type="text" class="form-control" id="vendorRequest">
+          </div>
+          <div class="mb-3">
+            <label for="distributorRequest" class="form-label">Distributor</label>
+            <input type="text" class="form-control" id="distributorRequest">
+          </div>
+          <div class="mb-3">
+            <label for="channelRequest" class="form-label">Channel</label>
+            <input type="text" class="form-control" id="channelRequest">
+          </div>
+          <div class="mb-3">
+            <label for="catalogRequest" class="form-label">Catalog_#</label>
+            <input type="text" class="form-control" id="catalogRequest">
+          </div>
+          <div class="mb-3">
+            <label for="unitsizeRequest" class="form-label">Unit_Size</label>
+            <input type="text" class="form-control" id="unitsizeRequest">
+          </div>
+          <div class="mb-3">
+            <label for="quantityRequest" class="form-label">Quantity</label>
+            <input type="text" class="form-control" id="quantityRequest">
+          </div>
+          <div class="mb-3">
+            <label for="unitpriceRequest" class="form-label">Unit Price</label>
+            <input type="text" class="form-control" id="unitpriceRequest">
+          </div>
+          <div class="mb-3">
+            <label for="totalpriceRequest" class="form-label">Total Price</label>
+            <input type="text" class="form-control" id="totalpriceRequest">
+          </div>
+
+          <h4>Received</h4>
+          <div class="mb-3">
+            <label for="purchaseorderRequest" class="form-label">Purchase Order</label>
+            <input type="text" class="form-control" id="purchaseorderRequest">
+          </div>
+          <div class="mb-3">
+            <label for="dateRequest" class="form-label">Date_Request</label>
+            <input type="text" class="form-control" id="dateRequest">
+          </div>
+          <div class="mb-3">
+            <label for="dateorderRequest" class="form-label">Date_Order</label>
+            <input type="text" class="form-control" id="dateorderRequest">
+          </div>
+          <div class="mb-3">
+            <label for="orderedbyRequest" class="form-label">Ordered_By</label>
+            <input type="text" class="form-control" id="orderedbyRequest">
+          </div>
+          <div class="mb-3">
+            <label for="linkRequest" class="form-label">Link</label>
+            <input type="text" class="form-control" id="linkRequest">
+          </div>
+          <div class="mb-3">
+            <label for="lablocationRequest" class="form-label">Lab_Loacation</label>
+            <input type="text" class="form-control" id="lablocationRequest">
+          </div>
+          <div class="mb-3">
+            <label for="datereceivedRequest" class="form-label">Date_Received</label>
+            <input type="text" class="form-control" id="datereceivedRequest">
+          </div>
+          <div class="mb-3">
+            <label for="receivedbyRequest" class="form-label">Received_By</label>
+            <input type="text" class="form-control" id="receivedbyRequest">
+          </div>
+          <div class="mb-3">
+            <label for="notesRequest" class="form-label">Notes</label>
+            <input type="text" class="form-control" id="notesRequest">
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- Request Note -->
+  <div class="modal fade" id="notesModal" tabindex="-1" role="dialog" aria-labelledby="notesModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="notesModalLabel">Request Notes</h5>
+          <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button> -->
+        </div>
+        <div class="modal-body">
+          <!-- Notes will go here -->
         </div>
       </div>
     </div>
@@ -79,11 +259,15 @@
   <script src="assets/libs/jquery/dist/jquery.min.js"></script>
   <script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-  <script src="assets/js/getallitem.js"></script>
+  <script src="assets/js/get-all-item.js"></script>
+  <script src="assets/js/my-request.js"></script>
+  <script src="assets/js/navbar.js"></script>
+
   <script>
     getAllItems();
+    getAllRequest();
   </script>
-</body>
 
+</body>
 
 </html>

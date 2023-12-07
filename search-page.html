@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/homepage.css">
     <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="assets/css/styles.min.css">
+    <link rel="stylesheet" href="tab/topBar/topBar.css">
 </head>
 
 <body class="bg-dark text-white">
@@ -21,25 +23,6 @@
                     </span>
                 </a>
             </div>
-            <div class="col-6">
-                <div class="user-profile dropdown">
-                    <div class="d-flex align-items-center dropdown-toggle pe-5" id="example" data-bs-toggle="dropdown"
-                        aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                        data-bs-custom-class="custom-tooltip" data-bs-title="Account">
-                        <img src="https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png"
-                            class="rounded-circle bg-secondary" width="50px" height="50px" alt="">
-                        <div class="ms-2 me-4">
-                            <h6 class="mb-0">JiaWei Zhao</h6>
-                            <span class="small">del Marmol lab</span>
-                        </div>
-                    </div>
-                    <ul class="dropdown-menu custom-dropdown">
-                        <li><a class="dropdown-item" href="javascript:;" onclick="">options</a></li>
-                        <li><a class="dropdown-item" href="javascript:;" onclick="">options</a></li>
-                        <li><a class="dropdown-item" href="javascript:;" onclick="">options</a></li>
-                    </ul>
-                </div>
-            </div>
         </div>
         <div class="row justify-content-center align-items-center" style="height:92vh">
             <div class="col-6">
@@ -50,17 +33,25 @@
                 </div>
                 <div class="form mb-3">
                     <i class="fa fa-search"></i>
-                    <input type="text" style="background-color:transparent;text-indent: 30px;" class="form-control"
+                    <input type="text" id="searchInput" style="background-color:white;text-indent: 30px;" class="form-control"
                         placeholder="Search by Full Name, Vendor, Catalog or Date">
-                    <i class="fa fa-times"></i>
+                    <i></i>
                 </div>
-                <a href="#" class="btn btn-primary offset-3 p-10">Add Request</a>
-                <a href="#" class="btn btn-secondary">Inventory Request</a>
+                <button onclick="searchItems()" class="btn btn-primary">Search</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <table id="inventory-all" class="display" width="100%"></table>
             </div>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="assets/js/navbar.js"></script>
+    <script src="assets/js/search.js"></script>
+    
 </body>
 
 </html>

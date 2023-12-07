@@ -1,0 +1,16 @@
+.column {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  button {
+    margin-bottom: 10px; /* Adds space between buttons */
+  }
+
+.badge-custom {
+    background-color: grey;
+
+}
+
+
+  
