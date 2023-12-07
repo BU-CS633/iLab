@@ -39,7 +39,7 @@ async function getAllRequest() {
 
     try {
         var HOST = "http://127.0.0.1:8000"
-        if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+        if (location.hostname == "localhost" || location.hostname == "127.0.0.1") {
             HOST = "https://ilab-api.onrender.com"
         }
         let requestsData = await fetchAllData(HOST + "/api/requests/");
@@ -150,7 +150,7 @@ async function getAllRequest() {
         const token = localStorage.getItem('token'); // Retrieve your auth token
         const authHeader = token ? { 'Authorization': 'Token ' + token } : {};
         var HOST = "http://127.0.0.1:8000"
-        if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+        if (location.hostname == "localhost" || location.hostname == "127.0.0.1") {
             HOST = "https://ilab-api.onrender.com"
         }
         $.ajax({
@@ -269,7 +269,7 @@ async function getAllRequest() {
         async function fetchCurrentUserId() {
             try {
                 var HOST = "http://127.0.0.1:8000"
-                if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+                if (location.hostname == "localhost" || location.hostname == "127.0.0.1") {
                     HOST = "https://ilab-api.onrender.com"
                 }
                 const response = await fetch(HOST + '/api/current_user/', {
@@ -323,7 +323,7 @@ async function getAllRequest() {
         // Log formData to console for demonstration purposes
         console.log('Form Data:', formData);
         var HOST = "http://127.0.0.1:8000"
-        if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+        if (location.hostname == "localhost" || location.hostname == "127.0.0.1") {
             HOST = "https://ilab-api.onrender.com"
         }
         fetch(HOST + '/api/requests/', {

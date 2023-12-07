@@ -5,7 +5,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
 
     try {
         var HOST = "http://127.0.0.1:8000"
-        if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+        if (location.hostname == "localhost" || location.hostname == "127.0.0.1") {
             HOST = "https://ilab-api.onrender.com"
         }
         const response = await fetch(HOST + '/api/login/', { // Adjust URL as needed

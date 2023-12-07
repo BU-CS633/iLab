@@ -55,7 +55,7 @@ async function getAllRequest() {
 
     try {
         var HOST = "http://127.0.0.1:8000"
-        if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+        if (location.hostname == "localhost" || location.hostname == "127.0.0.1") {
             HOST = "https://ilab-api.onrender.com"
         }
         let requestsData = await fetchAllData(HOST + "/api/requests/");
@@ -144,7 +144,7 @@ async function getAllRequest() {
     async function fetchCurrentUserId() {
         try {
             var HOST = "http://127.0.0.1:8000"
-            if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+            if (location.hostname == "localhost" || location.hostname == "127.0.0.1") {
                 HOST = "https://ilab-api.onrender.com"
             }
             const response = await fetch(HOST + '/api/current_user/', {

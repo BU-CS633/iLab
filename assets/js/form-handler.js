@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
             return; // Optionally, redirect to login page or show a message
         }
         var HOST = "http://127.0.0.1:8000"
-        if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+        if (location.hostname == "localhost" || location.hostname == "127.0.0.1") {
             HOST = "https://ilab-api.onrender.com"
         }
         // Example: Send a POST request to your server endpoint
