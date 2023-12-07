@@ -154,7 +154,7 @@ async function getAllRequest() {
             HOST = "http://127.0.0.1:8000"
         }
         $.ajax({
-            url: HOST + '/api/request/approve/${requestId}/', // Adjust URL as needed
+            url: HOST + `/api/request/approve/${requestId}/`, // Adjust URL as needed
             method: 'GET', // Use POST or appropriate method as per your backend API
             headers: authHeader,
             success: function (response) {
