@@ -25,10 +25,10 @@ async function getAllRequest() {
     async function fetchAllData(initialUrl) {
         const token = localStorage.getItem('token');
         const authHeader = token ? { 'Authorization': 'Token ' + token } : {};
-    
+
         let dataAccumulator = [];
         let url = initialUrl;
-    
+
         while (url) {
             const settings = {
                 "url": url,
@@ -39,7 +39,7 @@ async function getAllRequest() {
                     ...authHeader
                 },
             };
-    
+
             try {
                 let response = await $.ajax(settings);
                 dataAccumulator = dataAccumulator.concat(response.results);
@@ -49,13 +49,17 @@ async function getAllRequest() {
                 throw error; // Propagate the error
             }
         }
-    
+
         return dataAccumulator;
     }
 
     try {
-        let requestsData = await fetchAllData("http://127.0.0.1:8000/api/requests/");
-        let itemsData = await fetchAllData("http://127.0.0.1:8000/api/items/");
+        var HOST = "https://ilab-api.onrender.com"
+        if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+            HOST = "http://127.0.0.1:8000"
+        }
+        let requestsData = await fetchAllData(HOST + "/api/requests/");
+        let itemsData = await fetchAllData(HOST + "/api/items/");
 
         // Creating a lookup for items
         let itemLookup = {};
@@ -64,8 +68,8 @@ async function getAllRequest() {
         });
 
         requestsData = requestsData.filter(request => request.owner === userId);
-        
-    
+
+
         requestsData.forEach(request => {
             let item = itemLookup[request.item]; // Replace 'itemId' with your actual property name in request that refers to the item ID
             if (item) {
@@ -82,22 +86,22 @@ async function getAllRequest() {
                 let catalog = item.catalog || 'Unknown';
                 let channel = item.channel || 'Unknown';
                 let notesButton = `<button class="btn btn-link note-btn" data-notes="${request.request_notes}">View Notes</button>`;
-                
+
                 dataSet.push([
-                    request.owner_username, 
+                    request.owner_username,
                     itemName,
-                    itemId, 
-                    vendor, 
-                    catalog, 
-                    channel, 
+                    itemId,
+                    vendor,
+                    catalog,
+                    channel,
                     request.quantity_requested,
-                    item.price, 
+                    item.price,
                     request.total_price,
                     item.location,
                     notesButton,
                     request.request_date,
                     url,
-                    request.status, 
+                    request.status,
                 ]);
             }
         });
@@ -113,9 +117,9 @@ async function getAllRequest() {
                 { title: 'Channel' },
                 { title: 'Quantity Requested' },
                 { title: 'Unit Price' },
-                { title: 'Total Price' },       
-                { title: 'Location' },   
-                { title: 'Request Notes' },             
+                { title: 'Total Price' },
+                { title: 'Location' },
+                { title: 'Request Notes' },
                 { title: 'Date Request' },
                 { title: 'Link' },
                 { title: 'Status' },
@@ -131,7 +135,7 @@ async function getAllRequest() {
         console.error("Error fetching data: ", error);
     }
 
-    $(document).on('click', '.note-btn', function() {
+    $(document).on('click', '.note-btn', function () {
         let notes = $(this).data('notes');
         $('#notesModal .modal-body').text(notes);
         $('#notesModal').modal('show');
@@ -139,11 +143,15 @@ async function getAllRequest() {
 
     async function fetchCurrentUserId() {
         try {
-            const response = await fetch('http://127.0.0.1:8000/api/current_user/', {
+            var HOST = "https://ilab-api.onrender.com"
+            if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+                HOST = "http://127.0.0.1:8000"
+            }
+            const response = await fetch(HOST + '/api/current_user/', {
                 headers: new Headers({
-                'Authorization': 'Token ' + token  // Ensure correct format: 'Token <token>'
-            })
-        });
+                    'Authorization': 'Token ' + token  // Ensure correct format: 'Token <token>'
+                })
+            });
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -155,6 +163,6 @@ async function getAllRequest() {
             console.error('Failed to fetch current user ID:', error);
         }
     }
-     
+
 }
 

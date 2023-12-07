@@ -8,74 +8,116 @@
   <link rel="shortcut icon" type="image/png" href="assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="assets/css/styles.min.css" />
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+  <link rel="stylesheet" href="assets/css/add-request.css" />
 </head>
 
 <body>
-  <!--  Body Wrapper -->
-  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-header-position="fixed">
-    <!--  Main wrapper -->
-    <div class="body-wrapper">
-      <!--  Header Start -->
-      <header class="app-header">
-        <nav class="navbar navbar-expand-lg navbar-light">
-          <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
-            <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-              <a href="https://adminmart.com/product/modernize-free-bootstrap-admin-dashboard/" target="_blank"
-                class="btn btn-primary">Login</a>
-              <li class="nav-item dropdown">
-                <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
-                  aria-expanded="false">
-                  <img src="assets/images/profile/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">
-                </a>
-                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
-                  <div class="message-body">
-                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                      <i class="ti ti-user fs-6"></i>
-                      <p class="mb-0 fs-3">My Profile</p>
-                    </a>
-                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                      <i class="ti ti-mail fs-6"></i>
-                      <p class="mb-0 fs-3">My Account</p>
-                    </a>
-                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                      <i class="ti ti-list-check fs-6"></i>
-                      <p class="mb-0 fs-3">My Task</p>
-                    </a>
-                    <a href="./authentication-login.html" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </header>
-      <!--  Header End -->
-      <div class="container-fluid">
-        <!--  Row 1 -->
+      <div class="container-fluid mt-3">
         <div class="row">
-          <div class="col-lg-12 d-flex align-items-strech">
-            <div class="card w-100">
-              <div class="card-body">
-                <div class="mb-3 mb-sm-0">
-                  <h5 class="card-title fw-semibold">ItemList</h5>
+            <div class="col-md-12">
+                <div class="add-request-page">
+                    <div class="card card-body border-0 shadow">
+                        <a href="./search-page.html" class="h4"><i class="fas fa-arrow-left"></i></a>
+                        <div class="container">
+                            <div class="text-center">
+                                <h3>Add Request </h3>
+                                <p class="text-muted">text</p>
+                            </div>
+                            <form class="addrequest">
+                                <div class="row justify-content-between">
+                                    <div class="col-md-5">
+                                        <div class="form-group" id="#inventory-all">
+                                            <label for="">Item</label>
+                                            <input type="text" class="form-control" value="human  NFAT engineered ">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Full Name</label>
+                                            <textarea
+                                                class="form-control">human  NFAT engineered human  NFAT engineered human  NFAT engineered</textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">vendor</label>
+                                            <input type="text" class="form-control" value="human  NFAT engineered ">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Distrubtor</label>
+                                            <input type="text" class="form-control" value="human  NFAT engineered ">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Channel</label>
+                                            <select type="text" class="form-select">
+                                                <option value="human  NFAT engineered ">B2P</option>
+                                            </select>
+    
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Catelog</label>
+                                            <input type="text" class="form-control" value="13-711-7M ">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Link</label>
+                                            <input type="url" class="form-control" value="human  NFAT engineered ">
+                                            <button class="btn p-1 copybtn" type="button"><i
+                                                    class="fa-regular fa-clone "></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="">Unit_Size</label>
+                                                    <input type="text" class="form-control"
+                                                        value="human  NFAT engineered ">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="">Quantity</label>
+                                                    <input type="text" class="form-control"
+                                                        value="human  NFAT engineered ">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Unit Price</label>
+                                            <input type="text" class="form-control" value="$ 42.00 ">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Total Price</label>
+                                            <h2>$ 84.00</h2>
+                                        </div>
+                                        <div class="form-group mt-5">
+                                            <label for="">Date_Request</label>
+                                            <input type="text" class="form-control" value="Sep 6, 2023">
+                                        </div>
+                                        <div class="form-group mb-1">
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <label for="">Notes</label>
+                                                <button class="btn p-0" type="button"> <i
+                                                        class="fa-solid fa-upload"></i></button>
+                                            </div>
+                                            <textarea name="" class="form-control" rows="2">Text text</textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <p class="text-link m-0">NFAT engineered construc.pdf</p>
+                                                <a href="" class="btn p-0">X</a>
+                                            </div>
+                                            <input type="file" hidden>
+                                        </div>
+                                        <div class="btngroup mt-5 pt-4">
+                                            <a href="" class="btn btn-secondary w-100 py-2">Clear</a>
+                                            <button class="btn btn-primary w-100 py-2">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                <div id="myTableContainer">
-                  <table id="inventory-all" class="display">
-
-                  </table>
-                </div>
-              </div>
             </div>
-          </div>
         </div>
-        <div class="py-6 px-6 text-center">
-          <!-- <p class="mb-0 fs-4">Design and Developed by <a href="https://adminmart.com/" target="_blank"
-              class="pe-1 text-primary text-decoration-underline">AdminMart.com</a> Distributed by <a
-              href="https://themewagon.com">ThemeWagon</a></p> -->
-        </div>
-      </div>
     </div>
-  </div>
   <script src="assets/libs/jquery/dist/jquery.min.js"></script>
   <script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>

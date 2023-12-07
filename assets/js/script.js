@@ -9,10 +9,10 @@ async function getAllRequest() {
     async function fetchAllData(initialUrl) {
         const token = localStorage.getItem('token');
         const authHeader = token ? { 'Authorization': 'Token ' + token } : {};
-    
+
         let dataAccumulator = [];
         let url = initialUrl;
-    
+
         while (url) {
             const settings = {
                 "url": url,
@@ -23,7 +23,7 @@ async function getAllRequest() {
                     ...authHeader
                 },
             };
-    
+
             try {
                 let response = await $.ajax(settings);
                 dataAccumulator = dataAccumulator.concat(response.results);
@@ -33,20 +33,24 @@ async function getAllRequest() {
                 throw error; // Propagate the error
             }
         }
-    
+
         return dataAccumulator;
     }
 
     try {
-        let requestsData = await fetchAllData("http://127.0.0.1:8000/api/requests/");
-        let itemsData = await fetchAllData("http://127.0.0.1:8000/api/items/");
+        var HOST = "https://ilab-api.onrender.com"
+        if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+            HOST = "http://127.0.0.1:8000"
+        }
+        let requestsData = await fetchAllData(HOST + "/api/requests/");
+        let itemsData = await fetchAllData(HOST + "/api/items/");
 
         // Creating a lookup for items
         let itemLookup = {};
         itemsData.forEach(item => {
             itemLookup[item.id] = item; // Replace 'id' with your actual item identifier
         });
-    
+
         requestsData.forEach(request => {
             let item = itemLookup[request.item]; // Replace 'itemId' with your actual property name in request that refers to the item ID
             if (item) {
@@ -70,16 +74,16 @@ async function getAllRequest() {
                 if (request.status !== 'approved' && request.user_is_admin) {
                     actionColumnContent += `<button class="btn btn-approve" data-id="${request.id}">Approve</button>`;
                 }
-                
+
                 dataSet.push([
-                    request.owner_username, 
+                    request.owner_username,
                     itemName,
-                    itemId, 
-                    vendor, 
-                    catalog, 
-                    channel, 
+                    itemId,
+                    vendor,
+                    catalog,
+                    channel,
                     request.quantity_requested,
-                    item.price, 
+                    item.price,
                     request.total_price,
                     item.location,
                     notesButton,
@@ -99,14 +103,14 @@ async function getAllRequest() {
                 { title: 'Channel' },
                 { title: 'Quantity Requested' },
                 { title: 'Unit Price' },
-                { title: 'Total Price' },       
-                { title: 'Location' },   
-                { title: 'Request Notes' },             
+                { title: 'Total Price' },
+                { title: 'Location' },
+                { title: 'Request Notes' },
                 { title: 'Date Request' },
                 { title: 'Link' },
                 { title: 'Status', orderable: true, defaultContent: '' }, // If button is in 'Status' column
                 {
-                    title: 'Action', 
+                    title: 'Action',
                     data: null, // No specific data field is used for this column
                     defaultContent: '<button class="btn request-again w-100 py-1">Request Again</button>',
                     orderable: false // This column is not orderable
@@ -120,14 +124,14 @@ async function getAllRequest() {
         console.error("Error fetching data: ", error);
     }
 
-    $(document).on('click', '.note-btn', function() {
+    $(document).on('click', '.note-btn', function () {
         let notes = $(this).data('notes');
         $('#notesModal .modal-body').text(notes);
         $('#notesModal').modal('show');
     });
-     
 
-    $(document).ready(function() {
+
+    $(document).ready(function () {
         $('#all-request').on('click', '.request-again', function () {
             var data = $('#all-request').DataTable().row($(this).parents('tr')).data();
             populateForm(data);
@@ -135,50 +139,53 @@ async function getAllRequest() {
     });
 
     //approve button
-    $(document).on('click', '.btn-approve', function() {
+    $(document).on('click', '.btn-approve', function () {
         let requestId = $(this).data('id'); // Retrieve the request ID stored in the data-id attribute
-        
-        approveRequest(requestId, function() {
+
+        approveRequest(requestId, function () {
             alert("Request approved successfully!");
             location.reload(); // Refresh the page
         });
     });
-    
+
     function approveRequest(requestId, onSuccess) {
         const token = localStorage.getItem('token'); // Retrieve your auth token
         const authHeader = token ? { 'Authorization': 'Token ' + token } : {};
-    
+        var HOST = "https://ilab-api.onrender.com"
+        if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+            HOST = "http://127.0.0.1:8000"
+        }
         $.ajax({
-            url: `http://127.0.0.1:8000/api/request/approve/${requestId}/`, // Adjust URL as needed
+            url: HOST + `/api/request/approve/${requestId}/`, // Adjust URL as needed
             method: 'GET', // Use POST or appropriate method as per your backend API
             headers: authHeader,
-            success: function(response) {
+            success: function (response) {
                 // Handle successful approval
                 console.log("Request approved successfully:", response);
                 onSuccess(); // Call the onSuccess callback
                 // Optionally, update the UI to reflect the approval
             },
-            error: function(xhr, status, error) {
+            error: function (xhr, status, error) {
                 // Handle errors
                 console.error("Error approving request:", xhr.responseText);
             }
         });
     }
-    
-    
+
+
 
 
     function populateItemDropdown(itemNames) {
         var $itemNameDropdown = document.getElementById('itemNameInput');
-    
+
         $itemNameDropdown.innerHTML = ''; // Clear existing options
-    
-        itemNames.forEach(function(name) {
+
+        itemNames.forEach(function (name) {
             var option = new Option(name, name);
             $itemNameDropdown.appendChild(option);
         });
-    } 
-    
+    }
+
     function populateForm(data) {
 
         // Get the values from your data
@@ -205,9 +212,9 @@ async function getAllRequest() {
 
             // Calculate the new total price
             var newTotalPrice = newUnitPrice * newQuantityRequested;
-                // Update the displayed total price
-                $('#totalPriceDisplay').text(newTotalPrice.toFixed(2)); // Format to 2 decimal places
-            });
+            // Update the displayed total price
+            $('#totalPriceDisplay').text(newTotalPrice.toFixed(2)); // Format to 2 decimal places
+        });
 
         // Handle the Link
         var linkHtml = data[10]; // Assuming the link HTML is at index 10
@@ -219,8 +226,6 @@ async function getAllRequest() {
             // Set input value to empty if no link is provided
             $('#linkInput').val('');
         }      
-
-        console.log($('#catalogInput').val())
 
         var itemID = data[13]; // Assuming itemID is at index 13
         $('#itemIDInput').val(itemID); // Set the itemID in the hidden input
@@ -240,36 +245,40 @@ async function getAllRequest() {
         $('#addRequestModal').modal('show');
     }
 
-        // Attach event listener to the Clear button
-        var clearButton = document.getElementById('clearForm');
-        if (clearButton) {
-            clearButton.addEventListener('click', clearForm);
-        } else {
-            console.error('Clear button not found');
-        }
+    // Attach event listener to the Clear button
+    var clearButton = document.getElementById('clearForm');
+    if (clearButton) {
+        clearButton.addEventListener('click', clearForm);
+    } else {
+        console.error('Clear button not found');
+    }
 
-        // Function to clear the form
-        function clearForm() {
-            var form = document.querySelector('.addrequest');
-            if (form) {
-                form.reset();
-                $('#totalPriceDisplay').text('0.00'); // Reset the total price display
-                // Reset other fields as needed...
-            } else {
-                console.error('Form not found');
-            }
+    // Function to clear the form
+    function clearForm() {
+        var form = document.querySelector('.addrequest');
+        if (form) {
+            form.reset();
+            $('#totalPriceDisplay').text('0.00'); // Reset the total price display
+            // Reset other fields as needed...
+        } else {
+            console.error('Form not found');
         }
+    }
 
     // Function to handle form submission
     async function submitForm() {
         const token = localStorage.getItem('token'); // Retrieve the token from local storage
         async function fetchCurrentUserId() {
             try {
-                const response = await fetch('http://127.0.0.1:8000/api/current_user/', {
+                var HOST = "https://ilab-api.onrender.com"
+                if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+                    HOST = "http://127.0.0.1:8000"
+                }
+                const response = await fetch(HOST + '/api/current_user/', {
                     headers: new Headers({
-                    'Authorization': 'Token ' + token  // Ensure correct format: 'Token <token>'
-                })
-            });
+                        'Authorization': 'Token ' + token  // Ensure correct format: 'Token <token>'
+                    })
+                });
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
@@ -281,7 +290,7 @@ async function getAllRequest() {
                 console.error('Failed to fetch current user ID:', error);
             }
         }
-        
+
         let userId;
         try {
             userId = await fetchCurrentUserId();
@@ -289,46 +298,44 @@ async function getAllRequest() {
             console.error('Error fetching user ID:', error);
             return; // Stop execution if user ID could not be fetched
         }
-    
+
         if (!userId) {
             console.error('No user ID found');
             return; // Stop execution if no user ID
         }
 
-        // console.log(userId)
-
-        $(document).ready(function() {
-            console.log('Value of #quantityRequestedInput:', $('#quantityRequestedInput').val());
-        });
-        
+        console.log(userId)
         
         // Gather data from the form
         var formData = {
             // owner will be use when apply authtication that login will its user ID and user for post
                 owner: userId, //need to change to current user later
                 item: itemNameToID[$('#itemNameInput').val()],
-                quantity_requested: parseInt(document.getElementById('quantityRequestedInput').value) || 0,
+                qty: parseInt(document.getElementById('quantityRequestedInput').value),
                 price: parseFloat(document.getElementById('unitPriceInput').value),
                 vendor: document.getElementById('vendorInput').value,
                 channel: document.getElementById('channelInput').value,
                 link: document.getElementById('linkInput').value,
-                request_notes: document.getElementById('notesTextarea').value,
+                notes: document.getElementById('notesTextarea').value,
                 request_date: document.getElementById('dateRequestInput').value,
             // Add other fields as needed
         };
-        
+
 
         // Log formData to console for demonstration purposes
         console.log('Form Data:', formData);
-
-        fetch('http://127.0.0.1:8000/api/requests/', {
+        var HOST = "https://ilab-api.onrender.com"
+        if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+            HOST = "http://127.0.0.1:8000"
+        }
+        fetch(HOST + '/api/requests/', {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json',
-              ...authHeader
+                'Content-Type': 'application/json',
+                ...authHeader
             },
             body: JSON.stringify(formData),
-          })
+        })
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok: ' + response.statusText);
@@ -344,10 +351,10 @@ async function getAllRequest() {
             .catch((error) => {
                 console.error('Error:', error);
                 alert('Error creating request: ' + error); // Display error message
-        });
+            });
     }
-    
-    document.addEventListener('DOMContentLoaded', function() {
+
+    document.addEventListener('DOMContentLoaded', function () {
         displayCurrentUserName();
         // ... other initialization code ...
     });
