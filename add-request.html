@@ -25,8 +25,8 @@
                             </div>
                             <form class="addrequest">
                                 <div class="row justify-content-between">
-                                    <div class="col-md-5">
-                                        <div class="form-group" id="#inventory-all">
+                                    <div class="col-md-5" id="#inventory-all">
+                                        <div class="form-group" id="itemName">
                                             <label for="">Item</label>
                                             <input type="text" class="form-control" value="human  NFAT engineered ">
                                         </div>
@@ -106,8 +106,8 @@
                                             <input type="file" hidden>
                                         </div>
                                         <div class="btngroup mt-5 pt-4">
-                                            <a href="" class="btn btn-secondary w-100 py-2">Clear</a>
-                                            <button class="btn btn-primary w-100 py-2">Submit</button>
+                                            <a href="#" class="btn btn-secondary w-100 py-2">Clear</a>
+                                            <button class="btn btn-primary w-100 py-2" id="submitRequest">Submit</button>
                                         </div>
                                     </div>
                                 </div>
@@ -124,6 +124,29 @@
   <script src="assets/js/getallitem.js"></script>
   <script>
     getAllItems();
+  </script>
+  <script>
+    $(document).ready(function() {
+        $('#submitRequest').on('click', function() {
+            // Get the content of the element
+            var elementContent = $('#itemName').text();
+            var requestid = '1'
+
+            // Perform an AJAX request to the server with the content as a parameter
+            $.ajax({
+                url: 'http://127.0.0.1:8000/api/request/' + requestid,
+                method: 'GET',  // or 'POST' depending on your server-side setup,
+                success: function(response) {
+                    console.log('Server response:', response);
+                    alert('Server response: ' + JSON.stringify(response));
+                },
+                error: function(error) {
+                    console.error('Error sending request:', error);
+                    alert('Error sending request: ' + JSON.stringify(error));
+                }
+            });
+        });
+    });
   </script>
 </body>
 
