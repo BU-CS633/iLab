@@ -367,3 +367,21 @@ async function getAllRequest() {
         console.error('Submit button not found');
     }
 }
+
+
+function getItemDetail(id) {
+    var settings = {
+        "url": URL + "/api/items/" + id,
+        "method": "GET",
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+    };
+
+    $.ajax(settings).done(function (response) {
+        $("#item-name").text(response.name);
+        $("#item-fullname").text(response.fullName);
+        $("#item-vendor").text(response.vendor);
+    });
+}

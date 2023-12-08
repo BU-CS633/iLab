@@ -61,7 +61,9 @@ async function getAllItems(searchQuery = '') {
             item.channel ?? 'N/A',
             item.location ?? 'N/A',
             generateLinkHtml(item.link),
-            item.notes ?? 'N/A'
+            item.notes ?? 'N/A',
+            '<div class="btn-group"> <button type="button" onclick="getItemDetail(\'' + item.id + ' \')" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#InventoryModal">Detail</button></div>',
+
         ]);
 
         // Destroy the existing DataTable and recreate it with new data
@@ -85,7 +87,8 @@ async function getAllItems(searchQuery = '') {
                 { title: 'Channel' },
                 { title: 'Location' },
                 { title: 'Link' },
-                { title: 'Notes' }
+                { title: 'Notes' },
+                { title: 'Action' }
             ]
         });
     } catch (error) {
@@ -120,3 +123,38 @@ async function loadItems() {
 document.addEventListener('DOMContentLoaded', loadItems);
 
 
+function getItemDetail(id) {
+    var HOST = "http://127.0.0.1:8000"
+    if (location.hostname === "ilab-cs633.onrender.com") {
+        HOST = "https://ilab-api.onrender.com"
+    }
+    const token = localStorage.getItem('token');
+    if (!token) {
+        console.error('No token found, redirecting to login.');
+        window.location.href = 'login.html'; // Redirect to login page if no token
+        return;
+    }
+    var settings = {
+        "url": HOST + "/api/items/" + id,
+        "method": "GET",
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json",
+            'Authorization': 'Token ' + token
+
+        },
+    };
+
+    $.ajax(settings).done(function (response) {
+        console.log(response)
+        $("#name").text(response.name);
+        $("#fullname").val(response.fullName);
+        $("#vendor").val(response.vendor);
+        $("#distributor").val(response.vendor);
+        $("#channel").val(response.channel);
+        $("#catalog").val(response.catalog);
+        $("#unitsize").val(response.unitSize);
+        $("#quantity").val(response.qty);
+        $("#unitprice").val(response.price);
+    });
+}
