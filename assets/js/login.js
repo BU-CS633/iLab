@@ -19,7 +19,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
         const data = await response.json();
         if (response.ok) {
             localStorage.setItem('token', data.token);
-            alert('Login successful');
+            // alert('Login successful');
             window.location.href = 'search-page.html'; // Redirect user
         } else {
             document.getElementById('loginError').textContent = 'Invalid credentials';

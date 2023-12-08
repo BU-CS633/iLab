@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="add-item.css">
     <title>Add Item</title>
 </head>
+
 <body>
     <header>
         <!-- Top Bar or Navigation here -->
@@ -15,107 +17,117 @@
 
     <main>
         <div class="container mt-5">
-            <div class="row">
-                <div class="col-md-12">
-                    <form class="add-item-form">
+            <h3>Add New Item</h3>
+            <form class="add-item-form">
+                <div class="row">
+
+                    <div class="col-md-6">
+
                         <!-- Group form elements using fieldset if applicable -->
                         <div class="form-group">
                             <label for="itemName">Name</label>
-                            <input type="text" class="form-control" id="itemName" name="name" placeholder="Enter item name">
+                            <input type="text" class="form-control" id="itemName" name="name"
+                                placeholder="Enter item name">
                         </div>
 
-                                <!-- Full Name -->
-                                <div class="form-group">
-                                    <label for="itemFullName">Full Name</label>
-                                    <input type="text" class="form-control" id="itemFullName" name="fullName">
-                                </div>
+                        <!-- Full Name -->
+                        <div class="form-group">
+                            <label for="itemFullName">Full Name</label>
+                            <input type="text" class="form-control" id="itemFullName" name="fullName">
+                        </div>
 
-                                <!-- Unit Size -->
-                                <div class="form-group">
-                                    <label for="unitSize">Unit Size</label>
-                                    <input type="text" class="form-control" id="unitSize" name="unitSize">
-                                </div>
+                        <!-- Unit Size -->
+                        <div class="form-group">
+                            <label for="unitSize">Unit Size</label>
+                            <input type="text" class="form-control" id="unitSize" name="unitSize">
+                        </div>
 
-                                <!-- Quantity -->
-                                <div class="form-group">
-                                    <label for="quantity">Quantity</label>
-                                    <input type="number" class="form-control" id="quantity" name="quantity">
-                                </div>
+                        <!-- Quantity -->
+                        <div class="form-group">
+                            <label for="quantity">Quantity</label>
+                            <input type="number" class="form-control" id="quantity" name="quantity">
+                        </div>
 
-                                <!-- Price -->
-                                <div class="form-group">
-                                    <label for="price">Price</label>
-                                    <input type="text" class="form-control" id="price" name="price">
-                                </div>
+                        <!-- Price -->
+                        <div class="form-group">
+                            <label for="price">Price</label>
+                            <input type="text" class="form-control" id="price" name="price">
+                        </div>
 
-                                <!-- Vendor -->
-                                <div class="form-group">
-                                    <label for="vendor">Vendor</label>
-                                    <input type="text" class="form-control" id="vendor" name="vendor">
-                                </div>
+                        <!-- Vendor -->
+                        <div class="form-group">
+                            <label for="vendor">Vendor</label>
+                            <input type="text" class="form-control" id="vendor" name="vendor">
+                        </div>
 
-                                <!-- Catalog -->
-                                <div class="form-group">
-                                    <label for="catalog">Catalog</label>
-                                    <input type="text" class="form-control" id="catalog" name="catalog">
-                                </div>
+                        <!-- Catalog -->
+                        <div class="form-group">
+                            <label for="catalog">Catalog</label>
+                            <input type="text" class="form-control" id="catalog" name="catalog">
+                        </div>
 
-                                <!-- Last Order Date -->
-                                <div class="form-group">
-                                    <label for="lastOrderDate">Last Order Date</label>
-                                    <input type="date" class="form-control" id="lastOrderDate" name="lastOrderDate">
-                                </div>
 
-                                <!-- Last Received Date -->
-                                <div class="form-group">
-                                    <label for="lastReceivedDate">Last Received Date</label>
-                                    <input type="date" class="form-control" id="lastReceivedDate" name="lastReceivedDate">
-                                </div>
 
-                                <!-- Channel -->
-                                <div class="form-group">
-                                    <label for="channel">Channel</label>
-                                    <select class="form-control" id="channel" name="channel">
-                                        <option value="Option 1">Option 1</option>
-                                        <option value="Option 2">Option 2</option>
-                                        <!-- Add more options as needed -->
-                                    </select>
-                                </div>
+                    </div>
+                    <div class="col-md-6">
+                        <!-- Last Order Date -->
+                        <div class="form-group">
+                            <label for="lastOrderDate">Last Order Date</label>
+                            <input type="date" class="form-control" id="lastOrderDate" name="lastOrderDate">
+                        </div>
 
-                                <!-- Location -->
-                                <div class="form-group">
-                                    <label for="location">Location</label>
-                                    <input type="text" class="form-control" id="location" name="location">
-                                </div>
+                        <!-- Last Received Date -->
+                        <div class="form-group">
+                            <label for="lastReceivedDate">Last Received Date</label>
+                            <input type="date" class="form-control" id="lastReceivedDate" name="lastReceivedDate">
+                        </div>
 
-                                <!-- Link -->
-                                <div class="form-group">
-                                    <label for="link">Link</label>
-                                    <input type="url" class="form-control" id="link" name="link">
-                                </div>
+                        <!-- Channel -->
+                        <div class="form-group">
+                            <label for="channel">Channel</label>
+                            <select class="form-control" id="channel" name="channel">
+                                <option value="Option 1">Option 1</option>
+                                <option value="Option 2">Option 2</option>
+                                <!-- Add more options as needed -->
+                            </select>
+                        </div>
 
-                                <!-- Notes -->
-                                <div class="form-group">
-                                    <label for="notes">Notes</label>
-                                    <textarea class="form-control" id="notes" name="notes" rows="3"></textarea>
-                                </div>
+                        <!-- Location -->
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <input type="text" class="form-control" id="location" name="location">
+                        </div>
 
-                                <!-- Submit and Clear buttons -->
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Clear All</button>
-                                </div>
-                            </form>
+                        <!-- Link -->
+                        <div class="form-group">
+                            <label for="link">Link</label>
+                            <input type="url" class="form-control" id="link" name="link">
+                        </div>
+
+                        <!-- Notes -->
+                        <div class="form-group">
+                            <label for="notes">Notes</label>
+                            <textarea class="form-control" id="notes" name="notes" rows="3"></textarea>
+                        </div>
+
+                        <!-- Submit and Clear buttons -->
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Clear All</button>
                         </div>
                     </div>
+
                 </div>
-            </main>
-        
-            <footer>
-                <!-- Footer content here -->
-            </footer>
-            <script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-            <script src="assets/js/navbar.js"></script>
-            <script src="assets/js/form-handler.js"></script>
-        </body>
-        </html>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <!-- Footer content here -->
+    </footer>
+    <script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/navbar.js"></script>
+    <script src="assets/js/form-handler.js"></script>
+</body>
+
+</html>
